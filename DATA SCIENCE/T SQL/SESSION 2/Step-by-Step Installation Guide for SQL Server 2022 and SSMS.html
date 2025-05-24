@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Step-by-Step Installation Guide for SQL Server 2022 and SSMS.markdown</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="step-by-step-installation-guide-for-sql-server-2022-and-ssms-beginner-friendly">Step-by-Step Installation Guide for SQL Server 2022 and SSMS (Beginner-Friendly)</h1>
+<p><strong>Course</strong>: Data Management with SQL Server (OV-1507)<br>
+<strong>Purpose</strong>: This guide helps beginners install Microsoft SQL Server 2022, SQL Server Management Studio (SSMS), and the AdventureWorks 2022 sample database to prepare for the course.<br>
+<strong>Target Audience</strong>: Students new to SQL Server with basic computer skills.<br>
+<strong>System Requirements</strong> (from Presenter's Manual):</p>
+<ul>
+<li>Operating System: Microsoft Windows 10 or higher</li>
+<li>Hardware: Intel Core i3/i5 processor or higher, 8 GB RAM or above, 500 GB hard disk space</li>
+<li>Software: Microsoft SQL Server 2022, SSMS<br>
+<strong>Estimated Time</strong>: 1–2 hours</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Welcome to your first step in mastering data management with SQL Server! This guide will walk you through installing SQL Server 2022 (the database engine), SQL Server Management Studio (SSMS, the tool to interact with the database), and the AdventureWorks 2022 sample database for hands-on practice. Follow each step carefully, and you’ll be ready to dive into the course with a fully functional setup. Let’s get started!</p>
+<h2 id="step-by-step-installation-guide">Step-by-Step Installation Guide</h2>
+<h3 id="step-1-verify-system-requirements">Step 1: Verify System Requirements</h3>
+<ol>
+<li><strong>Check Your Operating System</strong>:
+<ul>
+<li>Ensure you’re using Windows 10 or higher.</li>
+<li>Go to <em>Settings &gt; System &gt; About</em> and check the “Windows specifications” section.</li>
+<li>If you’re on Windows 8 or earlier, upgrade to Windows 10 or higher (contact your IT support if needed).</li>
+</ul>
+</li>
+<li><strong>Check Hardware</strong>:
+<ul>
+<li>Confirm you have an Intel Core i3/i5 processor or better, at least 8 GB RAM, and 500 GB free disk space.</li>
+<li>Open <em>This PC</em> (File Explorer), right-click your main drive (usually C:), and select <em>Properties</em> to check free space.</li>
+<li>If your system doesn’t meet these requirements, consider upgrading RAM or freeing up disk space.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-2-download-sql-server-2022">Step 2: Download SQL Server 2022</h3>
+<ol>
+<li><strong>Visit the Official Microsoft Website</strong>:
+<ul>
+<li>Open a web browser (e.g., Chrome, Edge) and go to <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">Microsoft SQL Server 2022 Download</a>.</li>
+</ul>
+</li>
+<li><strong>Choose the Developer Edition</strong>:
+<ul>
+<li>Select the <strong>Developer Edition</strong> (free for non-production use, ideal for learning).</li>
+<li>Click <em>Download now</em> under “Developer” to download the installer (e.g., <code>SQL2022-SSEI-Dev.exe</code>).</li>
+<li>Save the file to a location like your <em>Downloads</em> folder (file size is ~1.5–2 GB).</li>
+</ul>
+</li>
+<li><strong>Why Developer Edition?</strong>:
+<ul>
+<li>It’s free and includes all Enterprise features, perfect for the course’s hands-on exercises.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-3-install-sql-server-2022">Step 3: Install SQL Server 2022</h3>
+<ol>
+<li><strong>Run the Installer</strong>:
+<ul>
+<li>Navigate to your <em>Downloads</em> folder and double-click the downloaded file (e.g., <code>SQL2022-SSEI-Dev.exe</code>).</li>
+<li>If prompted by User Account Control (UAC), click <em>Yes</em> to allow the installer to run.</li>
+</ul>
+</li>
+<li><strong>Select Installation Type</strong>:
+<ul>
+<li>In the SQL Server Installation Center, choose <em>Basic</em> for a beginner-friendly setup (or <em>Custom</em> for more control, but <em>Basic</em> is recommended).</li>
+<li>Click <em>Basic</em> and then <em>Accept</em> to agree to the license terms.</li>
+</ul>
+</li>
+<li><strong>Choose Installation Location</strong>:
+<ul>
+<li>Accept the default installation path (e.g., <code>C:\Program Files\Microsoft SQL Server</code>) or choose a custom location with at least 10 GB free space.</li>
+<li>Click <em>Install</em> to begin the installation (this may take 10–20 minutes).</li>
+</ul>
+</li>
+<li><strong>Configure SQL Server</strong>:
+<ul>
+<li>The installer sets up a default instance named <code>MSSQLSERVER</code>.</li>
+<li>Note the <em>Instance ID</em> and <em>Server Name</em> (e.g., <code>localhost</code> or your computer name) shown at the end of the installation.</li>
+<li>Select <em>Windows Authentication</em> (uses your Windows login) for simplicity; no need to set a password for now.</li>
+</ul>
+</li>
+<li><strong>Verify Installation</strong>:
+<ul>
+<li>Once complete, the installer displays a success message with connection details.</li>
+<li>Save or screenshot the <em>Server Name</em> (e.g., <code>YOUR-PC-NAME\MSSQLSERVER</code>) for use in SSMS.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-4-download-sql-server-management-studio-ssms">Step 4: Download SQL Server Management Studio (SSMS)</h3>
+<ol>
+<li><strong>Visit the SSMS Download Page</strong>:
+<ul>
+<li>Go to <a href="https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms">Microsoft SSMS Download</a>.</li>
+<li>Download the latest version of SSMS (e.g., <code>SSMS-Setup-ENU.exe</code>, ~600 MB).</li>
+<li>Save it to your <em>Downloads</em> folder.</li>
+</ul>
+</li>
+<li><strong>Why SSMS?</strong>:
+<ul>
+<li>SSMS is the graphical tool you’ll use to write T-SQL queries, manage databases, and explore the AdventureWorks database.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-5-install-ssms">Step 5: Install SSMS</h3>
+<ol>
+<li><strong>Run the SSMS Installer</strong>:
+<ul>
+<li>Double-click the downloaded file (e.g., <code>SSMS-Setup-ENU.exe</code>).</li>
+<li>Click <em>Yes</em> for UAC if prompted.</li>
+</ul>
+</li>
+<li><strong>Follow the Installation Wizard</strong>:
+<ul>
+<li>Accept the default installation path (e.g., <code>C:\Program Files (x86)\Microsoft SQL Server Management Studio 20</code>).</li>
+<li>Click <em>Install</em> (takes 5–10 minutes).</li>
+</ul>
+</li>
+<li><strong>Verify Installation</strong>:
+<ul>
+<li>After installation, search for <em>SQL Server Management Studio</em> in the Windows Start menu and open it.</li>
+<li>If it launches, you’re ready to connect to SQL Server.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-6-connect-to-sql-server-using-ssms">Step 6: Connect to SQL Server Using SSMS</h3>
+<ol>
+<li><strong>Open SSMS</strong>:
+<ul>
+<li>Launch SSMS from the Start menu.</li>
+</ul>
+</li>
+<li><strong>Connect to Your SQL Server Instance</strong>:
+<ul>
+<li>In the <em>Connect to Server</em> window:
+<ul>
+<li><strong>Server Type</strong>: Select <em>Database Engine</em>.</li>
+<li><strong>Server Name</strong>: Enter the server name from Step 3 (e.g., <code>localhost</code> or <code>YOUR-PC-NAME\MSSQLSERVER</code>).</li>
+<li><strong>Authentication</strong>: Choose <em>Windows Authentication</em> (uses your Windows login).</li>
+</ul>
+</li>
+<li>Click <em>Connect</em>.</li>
+</ul>
+</li>
+<li><strong>Troubleshooting Connection Issues</strong>:
+<ul>
+<li>If connection fails:
+<ul>
+<li>Ensure SQL Server is running: Open <em>SQL Server Configuration Manager</em> and check that <em>SQL Server (MSSQLSERVER)</em> is running.</li>
+<li>Verify the server name is correct.</li>
+<li>Check your firewall allows SQL Server (port 1433).</li>
+</ul>
+</li>
+<li>If issues persist, note the error message and ask your instructor or use the <em>Ask to Learn</em> feature on OnlineVarsity.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-7-download-and-install-adventureworks-2022">Step 7: Download and Install AdventureWorks 2022</h3>
+<ol>
+<li><strong>Download the Sample Database</strong>:
+<ul>
+<li>Go to <a href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure">Microsoft’s AdventureWorks Download Page</a>.</li>
+<li>Download the <em>AdventureWorks2022.bak</em> backup file (~200 MB).</li>
+<li>Save it to a folder like <code>C:\Backups</code>.</li>
+</ul>
+</li>
+<li><strong>Restore the Database in SSMS</strong>:
+<ul>
+<li>Open SSMS and connect to your SQL Server instance.</li>
+<li>Right-click <em>Databases</em> in Object Explorer and select <em>Restore Database</em>.</li>
+<li>In the <em>Restore Database</em> window:
+<ul>
+<li>Select <em>Device</em> and click the <em>…</em> button.</li>
+<li>Click <em>Add</em> and browse to <code>C:\Backups\AdventureWorks2022.bak</code>.</li>
+<li>Click <em>OK</em> to select the file.</li>
+<li>Ensure the <em>Database</em> field shows <em>AdventureWorks2022</em>.</li>
+<li>Click <em>OK</em> to restore (takes 1–5 minutes).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Verify the Database</strong>:
+<ul>
+<li>In Object Explorer, expand <em>Databases</em> and confirm <em>AdventureWorks2022</em> appears.</li>
+<li>Expand <em>AdventureWorks2022 &gt; Tables</em> to see tables like <code>Production.Product</code> and <code>Sales.Customer</code>.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-8-test-your-setup">Step 8: Test Your Setup</h3>
+<ol>
+<li><strong>Run a Sample Query</strong>:
+<ul>
+<li>In SSMS, click <em>New Query</em> in the toolbar.</li>
+<li>Enter the following T-SQL query:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> TOP <span class="hljs-number">5</span> FirstName, LastName
+<span class="hljs-keyword">FROM</span> Person.Person;
+</div></code></pre>
+</li>
+<li>Click <em>Execute</em> (F5) or the <em>Execute</em> button.</li>
+<li>You should see a result set with five names from the AdventureWorks database.</li>
+</ul>
+</li>
+<li><strong>Check Results</strong>:
+<ul>
+<li>If results appear, your setup is working!</li>
+<li>If you get an error, double-check your server connection or database restoration.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-9-prepare-for-the-course">Step 9: Prepare for the Course</h3>
+<ol>
+<li><strong>Access OnlineVarsity</strong>:
+<ul>
+<li>Log in to OnlineVarsity (details provided by your instructor).</li>
+<li>Download the <em>Learner’s Guide</em> (eBook) for <em>Data Management with SQL Server</em>.</li>
+<li>Explore the <em>Glossary</em> and <em>Practice 4 Me</em> sections for Session 1 and 2 content.</li>
+</ul>
+</li>
+<li><strong>Organize Your Environment</strong>:
+<ul>
+<li>Create a folder (e.g., <code>C:\SQLScripts</code>) to save your <code>.sql</code> files.</li>
+<li>Bookmark the AdventureWorks schema documentation for reference.</li>
+</ul>
+</li>
+<li><strong>Explore SSMS</strong>:
+<ul>
+<li>Spend 10–15 minutes browsing Object Explorer to view the <em>AdventureWorks2022</em> database structure (e.g., tables, columns).</li>
+</ul>
+</li>
+</ol>
+<h2 id="troubleshooting-tips">Troubleshooting Tips</h2>
+<ul>
+<li><strong>Installation Fails</strong>: Ensure you have admin privileges and enough disk space. Restart your PC and try again.</li>
+<li><strong>Connection Errors</strong>: Verify SQL Server is running in <em>SQL Server Configuration Manager</em>. Check firewall settings or consult your instructor.</li>
+<li><strong>Database Restore Issues</strong>: Ensure the <code>.bak</code> file path is correct and you have write permissions in the destination folder.</li>
+<li><strong>Need Help?</strong>: Use the <em>Ask to Learn</em> feature on OnlineVarsity or ask your instructor during Session 1.</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>You’ve successfully installed SQL Server 2022, SSMS, and the AdventureWorks 2022 database.</li>
+<li>You’re ready to connect to SQL Server, run T-SQL queries, and explore the course’s sample database.</li>
+<li>Your setup meets the course requirements, preparing you for hands-on labs and exercises.</li>
+</ul>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p>SQL Server is a leading platform for managing data in industries like finance, retail, and tech. By setting up your environment, you’re taking the first step toward becoming a data professional. In Session 1, you’ll learn RDBMS concepts, and in Session 2, you’ll use this setup to explore SQL Server 2022’s features!</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li><strong>Read</strong>: Review Session 1 (RDBMS Concepts) and Session 2 (E-R Model and Normalization) in <em>SQL Server-The Definitive Guide</em> on OnlineVarsity.</li>
+<li><strong>Practice</strong>: Run a few queries in SSMS (e.g., <code>SELECT * FROM Production.Product;</code>) to get comfortable.</li>
+<li><strong>Engage</strong>: Bring any setup questions to Session 1 to discuss with your instructor.</li>
+</ul>
+<p><em>Issue Date: March, 2024</em><br>
+<em>© 2024 Aptech Limited</em></p>
+
+</body>
+</html>
