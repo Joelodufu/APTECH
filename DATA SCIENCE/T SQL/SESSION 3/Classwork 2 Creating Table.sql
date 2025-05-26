@@ -11,9 +11,3 @@ SET NOCOUNT ON;
 -- 	FirstName NVARCHAR(50),
 -- 	Email NVARCHAR(100),
 -- );
-
-
-INSERT FakeUsers(ID, FirstName, Email)
-VALUES(001,'Emmanuel Odufu', 'emmanuelodufu@gmail.com');
-
--- SELECT * FROM FakeUsers;
