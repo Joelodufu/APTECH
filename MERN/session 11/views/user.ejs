@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+</head>
+<body>
+
+    <!-- HEADER  -->
+    <%- include('partials/header')%>
+
+    <!-- CONTENT  -->
+    <h1>User List</h1>
+    <form action="/users" method="POST">
+        <input type="text" name="email" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email">
+        <button type="submit">Add User</button>
+    </form>
+    <ul>
+        <% users.forEach(user=>{
+            <% 
+            <li><%= user.name%> - <%=user.email%> </li>
+            %>
+        }) %>
+    </ul>
+    <!-- FOOTER  -->
+    <%- include('partials/footer')  %>
+
+</body>
+</html>
