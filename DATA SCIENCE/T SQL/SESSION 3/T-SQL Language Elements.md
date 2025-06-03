@@ -270,7 +270,7 @@ The logical order of operators in a T-SQL `SELECT` statement is the sequence in 
   2. **WHERE**: Filters individual rows based on predicates.
   3. **GROUP BY**: Groups rows by specified columns.
   4. **HAVING**: Filters groups based on aggregate conditions.
-  5. **SELECT**: Specifies columns or computed expressions to return.
+  5. **SELECT**: Specifies columns or computed expressions to return.********
   6. **ORDER BY**: Sorts the final result set.
 - **Key Points**:
   - The written order (`SELECT`, `FROM`, etc.) is for readability; logical order determines execution.

@@ -61,19 +61,35 @@ USE AdventureWorks2022;
 
 -- U N I O  N   A L L
 --BATCH 1
-DECLARE @Color1 NVARCHAR (15)='Red';
-SELECT ProductID, Name, Color
-FROM Production.Product
-WHERE Color =@Color1;
-GO 
+-- DECLARE @Color1 NVARCHAR (15)='Red';
+-- SELECT ProductID, Name, Color
+-- FROM Production.Product
+-- WHERE Color =@Color1;
+-- GO 
 
---BATCH 2
-DECLARE @Color1 NVARCHAR (15)='Red';
-DECLARE @Color2 NVARCHAR(15)='Blue';
-SELECT ProductID, Name, Color
+-- --BATCH 2
+-- DECLARE @Color1 NVARCHAR (15)='Red';
+-- DECLARE @Color2 NVARCHAR(15)='Blue';
+-- SELECT ProductID, Name, Color
+-- FROM Production.Product
+-- WHERE Color = @Color1
+-- UNION ALL
+-- SELECT ProductID, Name, Color
+-- FROM Production.Product
+-- WHERE Color =@Color2;
+
+USE AdventureWorks2022;
+
+-- SELECT ProductID, Name
+-- FROM Production.Product
+-- WHERE ListPrice >1000
+
+-- INTERSECT 
+
+-- SELECT ProductID , Name
+-- FROM Production.Product
+-- WHERE ProductSubcategoryID =1;
+
 FROM Production.Product
-WHERE Color = @Color1
-UNION ALL
-SELECT ProductID, Name, Color
-FROM Production.Product
-WHERE Color =@Color2;
+WHERE ListPrice>2000
+SELECT ProductID, Name, Color;
