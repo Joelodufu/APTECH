@@ -1,0 +1,65 @@
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+SET NOCOUNT ON;
+/* tsqllint-disable error select-star */
+/* tsqllint-disable error schema-qualify */
+
+USE AptechDatabase;
+
+-- CREATING TABLES FOR E-LEARNING PLATFORM
+
+-- Users Table
+CREATE TABLE dbo.Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(256) NOT NULL,
+    Email NVARCHAR(255) NOT NULL UNIQUE,
+    FirstName NVARCHAR(100) NOT NULL,
+    LastName NVARCHAR(100) NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE()
+);
+
+-- Courses Table
+CREATE TABLE dbo.Courses (
+    CourseID INT PRIMARY KEY IDENTITY(1,1),
+    Title NVARCHAR(255) NOT NULL,
+    Description NVARCHAR(1000),
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE()
+);
+
+-- Modules Table
+CREATE TABLE dbo.Modules (
+    ModuleID INT PRIMARY KEY IDENTITY(1,1),
+    CourseID INT NOT NULL,
+    Name NVARCHAR(500) NOT NULL,
+    Description NVARCHAR(1000),
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (CourseID) REFERENCES dbo.Courses(CourseID) ON DELETE CASCADE
+);
+
+-- Enrollments Table
+CREATE TABLE dbo.Enrollments (
+    EnrollmentID INT PRIMARY KEY IDENTITY(1,1),
+    UserID INT NOT NULL,
+    CourseID INT NOT NULL,
+    EnrollmentDate DATETIME DEFAULT GETDATE(),
+    Status NVARCHAR(50) DEFAULT 'Active',
+    FOREIGN KEY (UserID) REFERENCES dbo.Users(UserID) ON DELETE CASCADE,
+    FOREIGN KEY (CourseID) REFERENCES dbo.Courses(CourseID) ON DELETE CASCADE
+);
+
+-- Assessments Table
+CREATE TABLE dbo.Assessments (
+    AssessmentID INT PRIMARY KEY IDENTITY(1,1),
+    ModuleID INT NOT NULL,
+    Title NVARCHAR(255) NOT NULL,
+    TotalMarks INT NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (ModuleID) REFERENCES dbo.Modules(ModuleID) ON DELETE CASCADE
+);

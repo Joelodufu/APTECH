@@ -18,7 +18,7 @@
 
 ### **VFX ADOBE AFTER EFFECT**
 1. Ridding Elephant
-2. 
+2. Talking to myself
 
 
 ### **VIDEO EDITING ADOBE PREMIRE PRO**
@@ -35,3 +35,4 @@
    4. 
 
 # **SOFTWARE DEVELOPMENT**
+### MOBILE APPS\

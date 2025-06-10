@@ -1,0 +1,23 @@
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+SET NOCOUNT ON;
+/* tsqllint-disable error select-star */
+/* tsqllint-disable error schema-qualify */
+
+
+
+CREATE DATABASE AptechDatabase;
+
+USE AptechDatabase;
+
+-- CREATING SOME STRONG (INDIPENDENT) ENTITIES
+CREATE TABLE dbo.Mosudules(
+    ModuleID INT PRIMARY KEY,
+    Name NVARCHAR (500),
+    Description NVARCHAR (1000)
+)
+WITH (DATA_COMPRESSION = PAGE);
+-- CREATING OTHER DEPENDENT ENTITIES 
+
