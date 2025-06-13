@@ -1,0 +1,12 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "Creating auth API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Joel Lee",
+  "license": "MIT"
+}

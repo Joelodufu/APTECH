@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>structure programming.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="class-note-structured-programming-session-7">Class Note: Structured Programming (Session 7)</h1>
+<h2 id="overview">Overview</h2>
+<p>Structured programming is a methodology that promotes writing clear, organized, and maintainable code using well-defined control structures and modular design. It relies on <strong>sequence</strong>, <strong>selection</strong>, and <strong>iteration</strong> to create programs that are easy to understand and modify. This session explores principles like modularity, top-down design, and the use of procedures, implemented in pseudocode and flowcharts. By the end of this class, you will be able to design modular algorithms, write structured pseudocode, and create flowcharts for efficient, readable programs.</p>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Understand the core principles of structured programming.</li>
+<li>Apply sequence, selection, and iteration control structures in program design.</li>
+<li>Create modular programs using procedures in pseudocode.</li>
+<li>Use top-down design to decompose complex problems into simpler modules.</li>
+<li>Develop flowcharts and pseudocode for structured solutions to practical problems.</li>
+</ul>
+<h2 id="key-concepts">Key Concepts</h2>
+<ol>
+<li>
+<p><strong>What Is Structured Programming?</strong></p>
+<ul>
+<li>A programming approach that organizes code into logical, modular units to enhance clarity, reduce errors, and improve maintainability.</li>
+<li>Uses three control structures:
+<ul>
+<li><strong>Sequence</strong>: Statements executed in order.</li>
+<li><strong>Selection</strong>: Decision-making with if-then-else (Session 4).</li>
+<li><strong>Iteration</strong>: Repetition with loops (Session 6).</li>
+</ul>
+</li>
+<li>Avoids unstructured practices like &quot;goto&quot; statements, which lead to complex, error-prone code.</li>
+</ul>
+</li>
+<li>
+<p><strong>Core Principles</strong></p>
+<ul>
+<li><strong>Modularity</strong>: Breaking a program into smaller, reusable modules (procedures) that perform specific tasks.</li>
+<li><strong>Top-Down Design</strong>: Starting with a high-level problem and refining it into detailed subproblems and modules.</li>
+<li><strong>Single Entry, Single Exit</strong>: Each module or control structure has one entry point and one exit point.</li>
+<li><strong>Clarity and Readability</strong>: Using meaningful variable names, consistent indentation, and comments for documentation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Procedures in Pseudocode</strong></p>
+<ul>
+<li>A <strong>procedure</strong> is a named block of code that encapsulates a task and can be called with parameters.</li>
+<li>Syntax:<pre class="hljs"><code><div>PROCEDURE name(parameter1, parameter2, ...)
+    action(s)
+    [RETURN value]
+END PROCEDURE
+</div></code></pre>
+</li>
+<li>Example: A procedure to calculate a discount can be reused across multiple programs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Top-Down Design Process</strong></p>
+<ul>
+<li><strong>Step 1</strong>: Identify the main problem (e.g., &quot;Process a movie ticket purchase&quot;).</li>
+<li><strong>Step 2</strong>: Divide it into subproblems (e.g., calculate ticket cost, apply discount, print receipt).</li>
+<li><strong>Step 3</strong>: Create modules (procedures) for each subproblem.</li>
+<li><strong>Step 4</strong>: Refine modules with pseudocode or flowcharts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Flowchart Representation</strong></p>
+<ul>
+<li><strong>Rectangles</strong>: Represent actions or procedure calls.</li>
+<li><strong>Diamonds</strong>: Represent decisions (selection).</li>
+<li><strong>Arrows with Loops</strong>: Represent iteration.</li>
+<li><strong>Subprocess Symbol</strong> (optional): A rectangle with double vertical lines for procedure calls.</li>
+<li>Example: A main flowchart calls procedure sub-flowcharts for modularity.</li>
+</ul>
+</li>
+</ol>
+<h2 id="examples">Examples</h2>
+<ol>
+<li>
+<p><strong>Sequence: Calculate Electricity Bill</strong></p>
+<ul>
+<li><strong>Problem</strong>: Compute an electricity bill based on units consumed (rate = $0.15/unit).</li>
+<li><strong>Pseudocode</strong>:<pre class="hljs"><code><div>START
+INPUT units
+cost = units * 0.15
+OUTPUT &quot;Electricity bill: $&quot;, cost
+END
+</div></code></pre>
+</li>
+<li><strong>Flowchart</strong> (text-based):<pre class="hljs"><code><div>[Start] → [Input units] → [cost = units * 0.15] → [Output &quot;Electricity bill: $&quot;, cost] → [End]
+</div></code></pre>
+</li>
+<li><strong>Explanation</strong>: Demonstrates sequence with linear execution of steps.</li>
+</ul>
+</li>
+<li>
+<p><strong>Modularity with Procedures: Movie Ticket Pricing</strong></p>
+<ul>
+<li><strong>Problem</strong>: Calculate the total cost of movie tickets with procedures for ticket cost and discount.</li>
+<li><strong>Pseudocode</strong>:<pre class="hljs"><code><div>PROCEDURE CalculateTicketCost(age)
+    IF age &lt;= 12 THEN
+        SET price = 5
+    ELSE IF age &gt;= 65 THEN
+        SET price = 7
+    ELSE
+        SET price = 10
+    END IF
+    RETURN price
+END PROCEDURE
+
+PROCEDURE ApplyDiscount(total)
+    IF total &gt; 50 THEN
+        SET discount = total * 0.1
+    ELSE
+        SET discount = 0
+    END IF
+    RETURN discount
+END PROCEDURE
+
+START
+INPUT age, quantity
+SET ticketPrice = CalculateTicketCost(age)
+SET total = ticketPrice * quantity
+SET discount = ApplyDiscount(total)
+SET finalTotal = total - discount
+OUTPUT &quot;Total before discount: $&quot;, total
+OUTPUT &quot;Discount: $&quot;, discount
+OUTPUT &quot;Final total: $&quot;, finalTotal
+END
+</div></code></pre>
+</li>
+<li><strong>Flowchart</strong> (main, text-based):<pre class="hljs"><code><div>[Start] → [Input age, quantity] → [Call CalculateTicketCost] → [total = ticketPrice * quantity] → [Call ApplyDiscount] → [finalTotal = total - discount] → [Output total, discount, finalTotal] → [End]
+</div></code></pre>
+</li>
+<li><strong>Explanation</strong>: Procedures separate ticket pricing and discount logic, enhancing modularity.</li>
+</ul>
+</li>
+<li>
+<p><strong>Top-Down Design: Library Fine Calculator</strong></p>
+<ul>
+<li><strong>Problem</strong>: Calculate library fines based on overdue days for multiple books.</li>
+<li><strong>Top-Down Design</strong>:
+<ul>
+<li>Main: Input book details, calculate total fine, output report.</li>
+<li>Modules:
+<ul>
+<li>InputBookDetails: Collect book name and overdue days.</li>
+<li>CalculateFine: Compute fine for one book ($1/day).</li>
+<li>OutputReport: Display total fine.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Pseudocode</strong>:<pre class="hljs"><code><div>PROCEDURE InputBookDetails
+    INPUT bookName, overdueDays
+    RETURN bookName, overdueDays
+END PROCEDURE
+
+PROCEDURE CalculateFine(overdueDays)
+    SET fine = overdueDays * 1
+    RETURN fine
+END PROCEDURE
+
+PROCEDURE OutputReport(totalFine)
+    OUTPUT &quot;Total fine: $&quot;, totalFine
+END PROCEDURE
+
+START
+SET totalFine = 0
+FOR i = 1 TO 3
+    SET bookName, overdueDays = InputBookDetails
+    SET fine = CalculateFine(overdueDays)
+    totalFine = totalFine + fine
+    OUTPUT bookName, &quot; fine: $&quot;, fine
+END FOR
+OutputReport(totalFine)
+END
+</div></code></pre>
+</li>
+<li><strong>Flowchart</strong> (main, text-based):<pre class="hljs"><code><div>[Start] → [totalFine = 0, i = 1] → [i &lt;= 3?] → Yes → [Call InputBookDetails] → [Call CalculateFine] → [totalFine = totalFine + fine] → [Output bookName, fine] → [i = i + 1] → [Back to i &lt;= 3?]
+                                        ↓ No
+                                   [Call OutputReport] → [End]
+</div></code></pre>
+</li>
+<li><strong>Explanation</strong>: Top-down design organizes the program into input, calculation, and output modules.</li>
+</ul>
+</li>
+<li>
+<p><strong>Combining Control Structures: Temperature Monitor</strong></p>
+<ul>
+<li><strong>Problem</strong>: Monitor daily temperatures, alerting if any exceed 30°C, using a procedure for alerts.</li>
+<li><strong>Pseudocode</strong>:<pre class="hljs"><code><div>PROCEDURE TemperatureAlert(temperature)
+    IF temperature &gt; 30 THEN
+        OUTPUT &quot;High temperature alert: &quot;, temperature, &quot;°C&quot;
+    END IF
+END PROCEDURE
+
+START
+FOR day = 1 TO 7
+    INPUT temperature
+    TemperatureAlert(temperature)
+END FOR
+END
+</div></code></pre>
+</li>
+<li><strong>Flowchart</strong> (main, text-based):<pre class="hljs"><code><div>[Start] → [day = 1] → [day &lt;= 7?] → Yes → [Input temperature] → [Call TemperatureAlert] → [day = day + 1] → [Back to day &lt;= 7?]
+                                  ↓ No
+                               [End]
+</div></code></pre>
+<ul>
+<li><strong>TemperatureAlert Flowchart</strong>:<pre class="hljs"><code><div>[Start TemperatureAlert] → [temperature &gt; 30?] → Yes → [Output alert] → [End TemperatureAlert]
+                                     ↓ No
+                                  [End TemperatureAlert]
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li><strong>Explanation</strong>: Combines iteration (for loop), selection (if-then), and modularity (procedure).</li>
+</ul>
+</li>
+</ol>
+<h2 id="classwork-activities">Classwork Activities</h2>
+<ol>
+<li>
+<p><strong>Pseudocode Writing</strong>:</p>
+<ul>
+<li><strong>Task</strong>: Write pseudocode for a program with a procedure to calculate the perimeter of a rectangle.
+<ul>
+<li>Main: Input length and width, call the procedure, output the result.</li>
+<li>Procedure: Compute perimeter (2 * (length + width)).</li>
+</ul>
+</li>
+<li><strong>Expected Pseudocode</strong>:<pre class="hljs"><code><div>PROCEDURE CalculatePerimeter(length, width)
+    SET perimeter = 2 * (length + width)
+    RETURN perimeter
+END PROCEDURE
+
+START
+INPUT length, width
+SET perimeter = CalculatePerimeter(length, width)
+OUTPUT &quot;Perimeter: &quot;, perimeter
+END
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Flowchart Design</strong>:</p>
+<ul>
+<li><strong>Task</strong>: Create a flowchart for a program that processes customer orders.
+<ul>
+<li>Main: Input order amounts until a negative amount is entered, call a procedure to calculate total.</li>
+<li>Procedure: Sum order amounts.</li>
+</ul>
+</li>
+<li><strong>Expected Flowchart</strong> (main, text-based):<pre class="hljs"><code><div>[Start] → [total = 0] → [Input amount] → [amount &gt;= 0?] → Yes → [total = total + amount] → [Back to Input amount]
+                                       ↓ No
+                                  [Output &quot;Total: $&quot;, total] → [End]
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Correction</strong>:</p>
+<ul>
+<li><strong>Task</strong>: Fix errors in this pseudocode:<pre class="hljs"><code><div>PROCEDURE calculateBonus(sales)
+    bonus = sales * 0.05
+    RETURN
+END
+INPUT sales
+OUTPUT calculateBonus(sales)
+</div></code></pre>
+</li>
+<li><strong>Issues</strong>:
+<ul>
+<li><code>RETURN</code> missing <code>bonus</code>.</li>
+<li>Missing <code>END PROCEDURE</code>.</li>
+<li>No <code>START/END</code>.</li>
+<li><code>OUTPUT</code> needs assignment of procedure result.</li>
+</ul>
+</li>
+<li><strong>Corrected Pseudocode</strong>:<pre class="hljs"><code><div>PROCEDURE CalculateBonus(sales)
+    SET bonus = sales * 0.05
+    RETURN bonus
+END PROCEDURE
+
+START
+INPUT sales
+SET bonus = CalculateBonus(sales)
+OUTPUT &quot;Bonus: $&quot;, bonus
+END
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Group Activity: Real-World Scenario</strong>:</p>
+<ul>
+<li><strong>Task</strong>: In pairs, design pseudocode and a flowchart for a program that manages a car rental system:
+<ul>
+<li>Main: Input rental days and car type (economy, luxury), call procedures to calculate base cost and insurance.</li>
+<li>Procedures:
+<ul>
+<li>CalculateBaseCost: $30/day for economy, $50/day for luxury.</li>
+<li>CalculateInsurance: 10% of base cost.</li>
+</ul>
+</li>
+<li>Output: Base cost, insurance, total.</li>
+</ul>
+</li>
+<li><strong>Example Pseudocode</strong>:<pre class="hljs"><code><div>PROCEDURE CalculateBaseCost(days, carType)
+    IF carType == &quot;economy&quot; THEN
+        SET cost = days * 30
+    ELSE
+        SET cost = days * 50
+    END IF
+    RETURN cost
+END PROCEDURE
+
+PROCEDURE CalculateInsurance(baseCost)
+    SET insurance = baseCost * 0.1
+    RETURN insurance
+END PROCEDURE
+
+START
+INPUT days, carType
+SET baseCost = CalculateBaseCost(days, carType)
+SET insurance = CalculateInsurance(baseCost)
+SET total = baseCost + insurance
+OUTPUT &quot;Base cost: $&quot;, baseCost
+OUTPUT &quot;Insurance: $&quot;, insurance
+OUTPUT &quot;Total: $&quot;, total
+END
+</div></code></pre>
+</li>
+<li><strong>Discussion</strong>: Share solutions and discuss how modularity simplifies maintenance.</li>
+</ul>
+</li>
+</ol>
+<h2 id="objective-questions-multiple-choice">Objective Questions (Multiple Choice)</h2>
+<p>Test your understanding of structured programming with the following questions:</p>
+<ol>
+<li>
+<p>What does structured programming emphasize?</p>
+<ul>
+<li>A) Complex code with goto statements</li>
+<li>B) Clear, modular, and maintainable code</li>
+<li>C) Avoiding control structures</li>
+<li>D) Writing code without procedures</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+<li>
+<p>Which control structure executes statements in order?</p>
+<ul>
+<li>A) Selection</li>
+<li>B) Iteration</li>
+<li>C) Sequence</li>
+<li>D) Modularity</li>
+<li><strong>Answer</strong>: C</li>
+</ul>
+</li>
+<li>
+<p>What is the benefit of modularity?</p>
+<ul>
+<li>A) Increases code complexity</li>
+<li>B) Makes code reusable and easier to maintain</li>
+<li>C) Eliminates the need for loops</li>
+<li>D) Requires more goto statements</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+<li>
+<p>In top-down design, what comes after defining the main problem?</p>
+<ul>
+<li>A) Write final code</li>
+<li>B) Divide into subproblems</li>
+<li>C) Execute the program</li>
+<li>D) Debug errors</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+<li>
+<p>What does this procedure do?</p>
+<pre class="hljs"><code><div>PROCEDURE CalculateTax(amount)
+    SET tax = amount * 0.07
+    RETURN tax
+END PROCEDURE
+</div></code></pre>
+<ul>
+<li>A) Calculates 7% tax</li>
+<li>B) Doubles the amount</li>
+<li>C) Subtracts 7 from the amount</li>
+<li>D) Divides the amount by 7</li>
+<li><strong>Answer</strong>: A</li>
+</ul>
+</li>
+<li>
+<p>What is wrong with this pseudocode?</p>
+<pre class="hljs"><code><div>PROCEDURE CalculateAverage(score1, score2)
+    average = (score1 + score2) / 2
+    RETURN average
+START
+    INPUT score1, score2
+    OUTPUT CalculateAverage
+END
+</div></code></pre>
+<ul>
+<li>A) Missing END PROCEDURE</li>
+<li>B) Incorrect procedure call</li>
+<li>C) No loop</li>
+<li>D) No selection</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+<li>
+<p>In a flowchart, what symbol is used for a procedure call?</p>
+<ul>
+<li>A) Diamond</li>
+<li>B) Rectangle</li>
+<li>C) Oval</li>
+<li>D) Parallelogram</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+<li>
+<p>What is the output of this pseudocode if length = 4, width = 3?</p>
+<pre class="hljs"><code><div>PROCEDURE CalculateArea(length, width)
+    SET area = length * width
+    RETURN area
+END PROCEDURE
+START
+    INPUT length, width
+    SET area = CalculateArea(length, width)
+    OUTPUT area
+END
+</div></code></pre>
+<ul>
+<li>A) 12</li>
+<li>B) 7</li>
+<li>C) 24</li>
+<li>D) 0</li>
+<li><strong>Answer</strong>: A</li>
+</ul>
+</li>
+<li>
+<p>What does the single entry, single exit principle ensure?</p>
+<ul>
+<li>A) Multiple entry points for modules</li>
+<li>B) One entry and one exit per module</li>
+<li>C) No returns in procedures</li>
+<li>D) Complex loop structures</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+<li>
+<p>Why avoid goto statements in structured programming?</p>
+<ul>
+<li>A) They simplify code</li>
+<li>B) They make code harder to follow</li>
+<li>C) They are required for modularity</li>
+<li>D) They improve readability</li>
+<li><strong>Answer</strong>: B</li>
+</ul>
+</li>
+</ol>
+<h2 id="homework">Homework</h2>
+<ol>
+<li><strong>Pseudocode Practice</strong>:
+<ul>
+<li>Write pseudocode for a program with a procedure to calculate the volume of a cube (side³).
+<ul>
+<li>Main: Input side length, call the procedure, output the result.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Flowchart Creation</strong>:
+<ul>
+<li>Design a flowchart for a program that processes student attendance:
+<ul>
+<li>Main: Input attendance status (present/absent) for 5 students, call a procedure to count present students.</li>
+<li>Procedure: Count and return number of present students.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Real-World Application</strong>:
+<ul>
+<li>Describe a scenario where structured programming is used (e.g., managing a bookstore inventory). Write a short paragraph and pseudocode with at least one procedure.</li>
+</ul>
+</li>
+<li><strong>Debugging Challenge</strong>:
+<ul>
+<li>Fix this pseudocode:<pre class="hljs"><code><div>PROCEDURE CalculateInterest(principal, rate)
+    interest = principal * rate
+    RETURN
+START
+    INPUT principal, rate
+    OUTPUT CalculateInterest(principal, rate)
+END
+</div></code></pre>
+<ul>
+<li>Issues: <code>RETURN</code> missing <code>interest</code>, missing <code>END PROCEDURE</code>, incorrect <code>OUTPUT</code>.</li>
+<li>Provide the corrected version.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li><strong>Teaching Tips</strong>:
+<ul>
+<li><strong>Duration</strong>: 2–3 class periods (3–4.5 hours).
+<ul>
+<li><strong>Period 1</strong>: Sequence, modularity, Examples 1 and 2, Activity 1.</li>
+<li><strong>Period 2</strong>: Top-down design, Examples 3 and 4, Activities 2 and 3.</li>
+<li><strong>Period 3 (optional)</strong>: Activity 4, review, quiz.</li>
+</ul>
+</li>
+<li><strong>Visual Aids</strong>: Illustrate top-down design with a diagram (e.g., breaking down a movie ticket system).</li>
+<li><strong>Engagement</strong>: Use relatable scenarios (e.g., library fines, car rentals).</li>
+<li><strong>Differentiation</strong>:
+<ul>
+<li>Beginners: Focus on simple procedures with sequence.</li>
+<li>Advanced: Introduce parameter passing or nested procedures.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Resources</strong>:
+<ul>
+<li>Flowchart tools: Draw.io, Lucidchart, or paper templates.</li>
+<li>Text editor for pseudocode: Notepad++, Visual Studio Code.</li>
+</ul>
+</li>
+<li><strong>Assessment</strong>:
+<ul>
+<li>Use objective questions for a quiz or homework.</li>
+<li>Grade classwork for correct procedure syntax, modularity, and flowchart logic.</li>
+</ul>
+</li>
+<li><strong>Extension</strong>:
+<ul>
+<li>Implement a pseudocode example in Python:<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_ticket_cost</span><span class="hljs-params">(age)</span>:</span>
+    <span class="hljs-keyword">if</span> age &lt;= <span class="hljs-number">12</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">5</span>
+    <span class="hljs-keyword">elif</span> age &gt;= <span class="hljs-number">65</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">7</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">10</span>
+
+age = int(input(<span class="hljs-string">"Enter age: "</span>))
+quantity = int(input(<span class="hljs-string">"Enter quantity: "</span>))
+ticket_price = calculate_ticket_cost(age)
+total = ticket_price * quantity
+print(<span class="hljs-string">"Total: $"</span>, total)
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li><strong>Connections</strong>:
+<ul>
+<li>Builds on Sessions 4–6 for control structures.</li>
+<li>Prepares for Session 8 (Arrays) by establishing modular design.</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
