@@ -4,9 +4,12 @@
   "description": "Creating auth API",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node hash.js",
     "dev": "nodemon server.js"
   },
   "author": "Joel Lee",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2"
+  }
 }

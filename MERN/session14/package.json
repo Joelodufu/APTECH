@@ -1,0 +1,23 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "Creating auth API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node hash.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Joel Lee",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
