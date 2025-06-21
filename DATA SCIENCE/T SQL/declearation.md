@@ -113,6 +113,8 @@
 
 ---
 
+THESE ARE ALL DEC;EARATIVE
+
 ## ✅ Summary Mnemonic (for recall):
 
 **"CRUD + JOIN + GROUP + FLOW + DEFINE"**
