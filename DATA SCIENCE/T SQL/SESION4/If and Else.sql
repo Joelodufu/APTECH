@@ -1,0 +1,12 @@
+USE AdventureWorks2022;
+--DECLARE @Score INT;
+
+--SET @Score = 71;
+
+--IF @Score>=70
+--	SELECT 'A' AS GRADE;
+--ELSE
+--	SELECT 'NOT A'  AS GRADE;
+
+
+SELECT DATENAME(YEAR, GETDATE()) AS TODAY;
