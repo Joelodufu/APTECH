@@ -1,0 +1,8 @@
+CONDITIONS, Rule1, Rule2, Rule3, Rule4,Rule 5,Rule 6,Rule 7,Rule 8
+Card Is Valid,Y,N,Y,N,Y,N,Y,N
+Pin Is Correct,Y,Y,N,N,Y,Y,N,N
+Suficient Ballance,Y,Y,Y,Y,N,N,N,N
+ACTIONS,,,,,,,,
+Allow Withdrawal,X,,,,,,,
+Deny Transaction,,X,X,X,,X,X,X
+Show insufficient Balance,,,,,X,,,

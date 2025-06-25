@@ -1,12 +1,17 @@
+
+/* tsqllint-disable error set-nocount */
+SET ANSI_NULLS ON;SET QUOTED_IDENTIFIER ON;SET ANSI_NULLS ON;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+/* tsqllint-disable error select-star */
+
 USE AdventureWorks2022;
---DECLARE @Score INT;
+DECLARE @Score INT;
 
---SET @Score = 71;
+SET @Score = 71;
 
---IF @Score>=70
---	SELECT 'A' AS GRADE;
---ELSE
---	SELECT 'NOT A'  AS GRADE;
+IF @Score>=70
+	SELECT 'A' AS GRADE;
+ELSE
+	SELECT 'NOT A'  AS GRADE;
 
 
 SELECT DATENAME(YEAR, GETDATE()) AS TODAY;

@@ -1,7 +1,7 @@
 # Class Notes: Distributed Version Control - Session 3 (Git & GitHub - TL3)
 
 ## Session Objectives
-By the end of this session, students will be able to:
+By the end  of this session, students will be able to:
 - Identify how to create a new branch.
 - Outline steps to develop code on multiple branches.
 - Outline steps to modify, rename, and delete a branch.

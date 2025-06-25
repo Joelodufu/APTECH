@@ -1,3 +1,6 @@
+/* tsqllint-disable error set-quoted-identifier */
+/* tsqllint-disable error set-transaction-isolation-level */
+/* tsqllint-disable error schema-qualify */
 USE LaptopShop;
 INSERT INTO ProductSales(
 ProductID,
