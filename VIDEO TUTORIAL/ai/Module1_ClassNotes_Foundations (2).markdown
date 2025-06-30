@@ -7,18 +7,19 @@
   - **Explanation:** AI processes data to identify patterns and make decisions, often without explicit programming.
   - **Analogy:** A skilled apprentice learning crafts by observing a master, or a self-driving car adapting to roads.
   - **Relevance to Present:** Underpins ChatGPT (OpenAI) for conversation and Grok (xAI) for insights.
-- **Class Work Sub-sub-session 1.1.1: Class Work - Set Up Development Environment**
-  - **Activity:** Install Python and Jupyter Notebook for AI exploration.
-  - **Resources:** Installation guide, python.org, troubleshooting tips.
+- **Packages:**
+  - **Pandas:** Manages data for analysis, essential for loading datasets.
+- **Class Work Sub-sub-session 1.1.1: Class Work - Set Up VS Code with Jupyter and Development Environment**
+  - **Activity:** Install VS Code, Jupyter extension, Python, and Pandas.
+  - **Resources:** VS Code, terminal, text editor.
   - **Step-by-Step Guide:**
-    1. Open your computer’s terminal or command prompt.
-    2. Type `python --version` or `python3 --version` and press Enter; if no version appears, proceed to step 3.
-    3. Visit python.org/downloads and click “Download Python” for the latest 3.x version (e.g., 3.11).
-    4. Run the installer, check “Add Python to PATH,” and click “Install Now,” following prompts to finish.
-    5. Verify with `python --version` (e.g., 3.11.0).
-    6. Install Jupyter by typing `pip install notebook` and pressing Enter, waiting for “Successfully installed.”
-    7. Launch Jupyter by typing `jupyter notebook` and pressing Enter; ensure it opens in your browser.
-    8. Create a new notebook (“New” > “Python 3”), type `print("Hello AI")`, run with `Shift + Enter`, and expect “Hello AI” output.
+    1. Download and install VS Code from code.visualstudio.com.
+    2. Open VS Code, go to Extensions (Ctrl+Shift+X or Cmd+Shift+X), search for “Jupyter,” install the official Microsoft Jupyter extension.
+    3. Open terminal (Ctrl+` or Cmd+`), type `python --version` or `python3 --version`; if no version, visit python.org/downloads, download 3.11, install with “Add Python to PATH.”
+    4. Verify with `python --version` (e.g., 3.11.0).
+    5. Type `pip install pandas` and press Enter; wait for “Successfully installed.”
+    6. In VS Code, create a new file (Ctrl+N or Cmd+N), save as `Setup.ipynb`, select Python kernel from the Jupyter toolbar.
+    7. In a new cell, type `import pandas as pd; print("Hello AI")`, run with Shift+Enter, expect “Hello AI.”
   - **Analogy:** Setting up a workshop with tools.
 
 ### Sub-session 1.2: Historical Milestones
@@ -43,8 +44,7 @@
     2. Select one milestone (e.g., Deep Blue 1997).
     3. Read about it and note its year, key event, and impact (e.g., “1997, Deep Blue beat Kasparov, advanced strategic AI”).
     4. Write a 2-sentence summary in your notebook.
-    5. Share with a partner.Introduction to Artificial Intelligence
-
+    5. Share with a partner.
   - **Analogy:** Exploring a history book chapter.
 
 ### Sub-session 1.3: Types of AI
@@ -77,14 +77,12 @@
   - **Analogy:** A gardener tweaking soil for better flowers, or a detective using past clues.
   - **Relevance to Present:** Core to ChatGPT and Gemini.
 - **Class Work Sub-sub-session 2.1.1: Class Work - Install ML Libraries**
-  - **Activity:** Install Pandas and Scikit-learn for ML tasks.
-  - **Resources:** Guide, terminal.
+  - **Activity:** Install Scikit-learn and verify in VS Code.
+  - **Resources:** Terminal, VS Code.
   - **Step-by-Step Guide:**
-    1. Open terminal.
-    2. Type `pip install pandas` and press Enter; wait for “Successfully installed.”
-    3. Type `pip install scikit-learn` and press Enter; wait for “Successfully installed.”
-    4. Open Jupyter with `jupyter notebook`.
-    5. Create a new notebook, type `import pandas as pd; import sklearn`, run with `Shift + Enter`, expect no errors.
+    1. Open terminal in VS Code (Ctrl+` or Cmd+`).
+    2. Type `pip install scikit-learn` and press Enter; wait for “Successfully installed.”
+    3. In `Setup.ipynb`, add a new cell, type `import sklearn; print("Scikit-learn installed")`, run with Shift+Enter, expect “Scikit-learn installed.”
   - **Analogy:** Adding cooking tools to your kitchen.
 
 ### Sub-session 2.2: Learning Types
@@ -140,15 +138,27 @@
   - **Analogy:** Librarian organizing shelves, or email sorter.
 - **Class Work Sub-sub-session 2.4.1: Class Work - Run a Pandas Demo**
   - **Activity:** Load and explore a dataset with Pandas.
-  - **Resources:** `sample_data.csv`, Jupyter Notebook.
+  - **Resources:** `sample_data.csv`, VS Code.
   - **Step-by-Step Guide:**
-    1. Download `sample_data.csv` from the link.
-    2. Open Jupyter with `jupyter notebook`.
-    3. Create a new notebook, type `import pandas as pd` and press `Shift + Enter`.
-    4. Type `data = pd.read_csv('sample_data.csv')` and press `Shift + Enter`.
-    5. Type `print(data.head())` and press `Shift + Enter` to see the first 5 rows.
-    6. Type `print(data.describe())` and press `Shift + Enter` for statistics.
-    7. Save as `PandasDemo.ipynb`.
+    1. Create `sample_data.csv` with:  
+       ```
+       feature1,feature2
+       1.0,2.0
+       1.5,1.8
+       2.0,2.2
+       3.0,3.5
+       3.2,3.7
+       4.0,4.1
+       5.0,5.2
+       5.5,5.0
+       6.0,6.0
+       6.5,6.2
+       ```
+       Save in your project folder.
+    2. In VS Code, open or create `PandasDemo.ipynb`, select Python kernel.
+    3. In a new cell, type `import pandas as pd; data = pd.read_csv('sample_data.csv'); print(data.head())`, run with Shift+Enter (expect first 5 rows).
+    4. In a new cell, type `print(data.describe())`, run, expect statistics.
+    5. Save the notebook.
   - **Expected Output:** Table preview, stats (e.g., mean, std).
 
 ## Session 3: Tools and Setup
@@ -157,46 +167,42 @@
 - **Python:** High-level language for AI/ML.
 - **Scikit-learn:** Tools for ML tasks.
 - **TensorFlow:** Framework for model building, used by Gemini.
-- **Jupyter Notebook:** Interactive coding environment.
+- **Jupyter in VS Code:** Interactive coding environment.
 
 ### Sub-session 3.2: Installation and Best Practices
 - **Teacher Entry:** "Having reviewed tools, let’s set them up properly. Welcome to Installation and Best Practices!"
 - **Class Work Sub-sub-session 3.2.1: Class Work - Install Full Toolset**
-  - **Activity:** Install Python, Scikit-learn, TensorFlow, and Jupyter.
+  - **Activity:** Install Python, Scikit-learn, TensorFlow, and verify in VS Code.
   - **Resources:** Guide, python.org, tensorflow.org.
   - **Step-by-Step Guide:**
-    1. Open terminal, type `python --version`; if absent, go to python.org/downloads, download 3.11, install with “Add to PATH.”
+    1. Open terminal in VS Code, type `python --version`; if absent, go to python.org/downloads, download 3.11, install with “Add to PATH.”
     2. Verify with `python --version`.
     3. Type `pip install scikit-learn` and `pip install tensorflow`, wait for “Successfully installed.”
-    4. Type `pip install notebook` and wait.
-    5. Open Jupyter with `jupyter notebook`.
-    6. Create a cell, type `import sklearn; import tensorflow as tf; print(tf.__version__)`, run, expect version (e.g., 2.15).
+    4. In `Setup.ipynb`, add a cell, type `import sklearn; import tensorflow as tf; print(tf.__version__)`, run, expect version (e.g., 2.15).
   - **Analogy:** Stocking a kitchen.
 
 ## Session 4: Resources and Activity
 ### Sub-session 4.1: Resources
 - **Teacher Entry:** "With tools ready, let’s gather resources. Welcome to the Resources section!"
-- **Jupyter Notebook:** Interactive platform.
-- **Sample CSV Dataset:** Pre-made data table.
+- **Jupyter in VS Code:** Interactive platform.
+- **Sample CSV Dataset:** `sample_data.csv`.
 
 ### Sub-session 4.2: Activity - "Hello, AI World!"
 - **Teacher Entry:** "Equipped with resources, let’s start coding. Welcome to the Activity - 'Hello, AI World!'"
 - **Class Work Sub-sub-session 4.2.1: Class Work - Write and Run Hello AI Code**
   - **Activity:** Create and run a simple AI greeting script.
-  - **Resources:** Jupyter Notebook.
+  - **Resources:** VS Code, `HelloAI.ipynb`.
   - **Step-by-Step Guide:**
-    1. Open Jupyter with `jupyter notebook`.
-    2. Click “New” > “Python 3.”
-    3. Type `name = input("Enter your name: "); print(f"Hello, {name}, welcome to AI!")` in a cell.
-    4. Press `Shift + Enter`, enter your name (e.g., “John”), expect “Hello, John, welcome to AI!”
-    5. Save as `HelloAI.ipynb`.
+    1. In VS Code, create `HelloAI.ipynb`, select Python kernel.
+    2. In a new cell, type `name = input("Enter your name: "); print(f"Hello, {name}, welcome to AI!")`, run with Shift+Enter, enter your name (e.g., “John”), expect “Hello, John, welcome to AI!”
+    3. Save the notebook.
   - **Expected Output:** Personalized greeting.
 - **Class Work Sub-sub-session 4.2.2: Class Work - Modify and Share**
   - **Activity:** Modify the script and share with a partner.
-  - **Resources:** Notebook.
+  - **Resources:** `HelloAI.ipynb`.
   - **Step-by-Step Guide:**
     1. Open `HelloAI.ipynb`.
-    2. Edit to `print(f"Hello, {name}, let’s learn AI on {date.today()}!")`, run, expect updated output (e.g., current date).
+    2. Edit to `from datetime import date; name = input("Enter your name: "); print(f"Hello, {name}, let’s learn AI on {date.today()}!")`, run, expect updated output (e.g., current date).
     3. Save changes.
     4. Show your partner and note their modification.
   - **Expected Output:** Date-included greeting.
@@ -214,4 +220,3 @@
     4. Pair with a classmate.
     5. Read and discuss for 5 minutes.
   - **Analogy:** Journaling after a class.
-- Reflect on the activity—your AI introduction.
