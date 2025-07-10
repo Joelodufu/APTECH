@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>note.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="database-management-advanced-sql-concepts-adventureworks2022">Database Management: Advanced SQL Concepts (AdventureWorks2022)</h1>
+<p>This note uses the <strong>AdventureWorks2022</strong> database, a sample SQL Server database modeling a bicycle manufacturing and sales company. All examples are based on standard tables in schemas like <code>Sales</code>, <code>Production</code>, <code>HumanResources</code>, and <code>Person</code>.</p>
+<h2 id="1-advanced-queries-and-joins">1. Advanced Queries and Joins</h2>
+<h3 id="overview">Overview</h3>
+<p>Advanced queries in SQL Server leverage subqueries, Common Table Expressions (CTEs), and joins to analyze data in AdventureWorks2022. Joins combine rows from tables like <code>Sales.SalesOrderHeader</code> and <code>Person.Person</code> based on related columns.</p>
+<h3 id="expanded-explanations-and-definitions">Expanded Explanations and Definitions</h3>
+<ul>
+<li><strong>Subqueries</strong>: A nested query executed first to provide results for the outer query. They can be non-correlated (independent) or correlated (dependent on outer query rows).
+<ul>
+<li><strong>Sub-explanation</strong>: Subqueries filter or compute values in <code>WHERE</code> or <code>SELECT</code> clauses.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> FirstName
+<span class="hljs-keyword">FROM</span> Person.Person
+<span class="hljs-keyword">WHERE</span> BusinessEntityID = (<span class="hljs-keyword">SELECT</span> BusinessEntityID <span class="hljs-keyword">FROM</span> HumanResources.Employee <span class="hljs-keyword">WHERE</span> NationalIDNumber = <span class="hljs-string">'295847284'</span>);
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: The subquery returns one <code>BusinessEntityID</code>, and the outer query fetches the corresponding name, fulfilling the subquery’s filtering role.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Common Table Expressions (CTEs)</strong>: Temporary result sets defined with <code>WITH</code>, improving readability and supporting recursion (e.g., for hierarchical data in <code>Production.BillOfMaterials</code>).
+<ul>
+<li><strong>Sub-explanation</strong>: CTEs are reusable within a query, unlike subqueries.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">WITH</span> ProductCTE <span class="hljs-keyword">AS</span> (
+    <span class="hljs-keyword">SELECT</span> ProductID, <span class="hljs-keyword">Name</span>
+    <span class="hljs-keyword">FROM</span> Production.Product
+)
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">Name</span> <span class="hljs-keyword">FROM</span> ProductCTE <span class="hljs-keyword">WHERE</span> ProductID = <span class="hljs-number">1</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: The CTE stores product data, and the outer query retrieves one name, showing CTEs’ role in organizing data.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Joins</strong>: Combine rows from multiple tables based on a condition.
+<ul>
+<li><strong>Types of Joins</strong>:
+<ul>
+<li><strong>INNER JOIN</strong>: Returns only matching rows from both tables.
+<ul>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.FirstName, s.SalesOrderID
+<span class="hljs-keyword">FROM</span> Person.Person p
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Sales.SalesOrderHeader s <span class="hljs-keyword">ON</span> p.BusinessEntityID = s.CustomerID;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Only customers with orders are included, fulfilling the match-only requirement.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>LEFT (OUTER) JOIN</strong>: Returns all rows from the left table, with NULLs for non-matching right table rows.
+<ul>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.FirstName, s.SalesOrderID
+<span class="hljs-keyword">FROM</span> Person.Person p
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Sales.SalesOrderHeader s <span class="hljs-keyword">ON</span> p.BusinessEntityID = s.CustomerID;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: All persons appear, with NULLs for those without orders, showing left table inclusion.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RIGHT (OUTER) JOIN</strong>: Returns all rows from the right table, with NULLs for non-matching left table rows.
+<ul>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.FirstName, s.SalesOrderID
+<span class="hljs-keyword">FROM</span> Person.Person p
+<span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">JOIN</span> Sales.SalesOrderHeader s <span class="hljs-keyword">ON</span> p.BusinessEntityID = s.CustomerID;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: All orders appear, with NULLs for non-existent customers, prioritizing the right table.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>FULL (OUTER) JOIN</strong>: Returns all rows from both tables, with NULLs for non-matches.
+<ul>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.FirstName, s.SalesOrderID
+<span class="hljs-keyword">FROM</span> Person.Person p
+<span class="hljs-keyword">FULL</span> <span class="hljs-keyword">JOIN</span> Sales.SalesOrderHeader s <span class="hljs-keyword">ON</span> p.BusinessEntityID = s.CustomerID;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Includes all persons and orders, with NULLs for non-matches, fulfilling complete inclusion.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>CROSS JOIN</strong>: Produces a Cartesian product of all rows.
+<ul>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.Name, c.Name
+<span class="hljs-keyword">FROM</span> Production.Product p
+<span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> Production.ProductCategory c;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Pairs every product with every category, showing all combinations.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>SELF JOIN</strong>: Joins a table to itself for hierarchical data.
+<ul>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> e1.FirstName <span class="hljs-keyword">AS</span> Employee, e2.FirstName <span class="hljs-keyword">AS</span> Manager
+<span class="hljs-keyword">FROM</span> HumanResources.Employee e1
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> HumanResources.Employee e2 <span class="hljs-keyword">ON</span> e1.BusinessEntityID = e2.OrganizationNode.GetAncestor(<span class="hljs-number">1</span>).GetDescendant(e1.OrganizationNode, <span class="hljs-literal">NULL</span>);
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Links employees to managers, showing hierarchical relationships.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="basic-inner-join">Basic: INNER JOIN</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> p.FirstName, p.LastName, s.SalesOrderID
+<span class="hljs-keyword">FROM</span> Person.Person p
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Sales.SalesOrderHeader s <span class="hljs-keyword">ON</span> p.BusinessEntityID = s.CustomerID
+<span class="hljs-keyword">WHERE</span> s.OrderDate &gt;= <span class="hljs-string">'2014-01-01'</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Retrieves customer names and order IDs for orders after January 1, 2014.</p>
+<h4 id="intermediate-correlated-subquery">Intermediate: Correlated Subquery</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> soh.SalesOrderID, soh.TotalDue
+<span class="hljs-keyword">FROM</span> Sales.SalesOrderHeader soh
+<span class="hljs-keyword">WHERE</span> soh.TotalDue &gt; (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(TotalDue)
+    <span class="hljs-keyword">FROM</span> Sales.SalesOrderHeader
+    <span class="hljs-keyword">WHERE</span> SalesPersonID = soh.SalesPersonID
+);
+</div></code></pre>
+<p><strong>Explanation</strong>: Finds orders with totals above the average for their salesperson.</p>
+<h4 id="advanced-recursive-cte-for-bill-of-materials">Advanced: Recursive CTE for Bill of Materials</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">WITH</span> BOM <span class="hljs-keyword">AS</span> (
+    <span class="hljs-keyword">SELECT</span> ProductAssemblyID, ComponentID, PerAssemblyQty, <span class="hljs-number">0</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">Level</span>
+    <span class="hljs-keyword">FROM</span> Production.BillOfMaterials
+    <span class="hljs-keyword">WHERE</span> ProductAssemblyID = <span class="hljs-number">800</span>  <span class="hljs-comment">-- Example: ML Road Frame</span>
+    <span class="hljs-keyword">UNION</span> <span class="hljs-keyword">ALL</span>
+    <span class="hljs-keyword">SELECT</span> b.ProductAssemblyID, b.ComponentID, b.PerAssemblyQty, <span class="hljs-keyword">Level</span> + <span class="hljs-number">1</span>
+    <span class="hljs-keyword">FROM</span> Production.BillOfMaterials b
+    <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> BOM <span class="hljs-keyword">ON</span> b.ProductAssemblyID = BOM.ComponentID
+)
+<span class="hljs-keyword">SELECT</span> p.Name, BOM.PerAssemblyQty, BOM.Level
+<span class="hljs-keyword">FROM</span> BOM
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Production.Product p <span class="hljs-keyword">ON</span> BOM.ComponentID = p.ProductID;
+</div></code></pre>
+<p><strong>Explanation</strong>: Builds a hierarchical bill of materials for product ID 800, showing components and levels.</p>
+<h3 id="real-life-use-case">Real-Life Use Case</h3>
+<p><strong>Sales Reporting</strong>: AdventureWorks joins <code>Sales.SalesOrderHeader</code>, <code>Sales.SalesOrderDetail</code>, and <code>Production.Product</code> to identify top-selling products, using subqueries to filter high-value orders, informing marketing strategies.</p>
+<hr>
+<h2 id="2-views-stored-procedures-and-query-metadata">2. Views, Stored Procedures, and Query Metadata</h2>
+<h3 id="views">Views</h3>
+<h4 id="overview">Overview</h4>
+<p>Views are virtual tables defined by SQL queries, simplifying data access in AdventureWorks2022’s schemas like <code>Sales</code> and <code>Person</code>.</p>
+<h4 id="expanded-explanations-and-definitions">Expanded Explanations and Definitions</h4>
+<ul>
+<li><strong>View</strong>: A saved query acting like a table, without storing data physically.
+<ul>
+<li><strong>Sub-explanation</strong>: Abstracts complex queries for usability.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> Sales.vCustomerNames <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> FirstName, LastName
+<span class="hljs-keyword">FROM</span> Person.Person;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Hides other columns, showing only names, fulfilling data abstraction.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Updatable View</strong>: Allows modifications if based on one table with no aggregations. <code>WITH CHECK OPTION</code> enforces the view’s <code>WHERE</code> clause.
+<ul>
+<li><strong>Sub-explanation</strong>: Ensures updates align with the view’s scope.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> HumanResources.vEmployeePay <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> BusinessEntityID, Rate
+<span class="hljs-keyword">FROM</span> HumanResources.EmployeePayHistory
+<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">CHECK</span> <span class="hljs-keyword">OPTION</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Allows rate updates, ensuring compliance, fulfilling updatability.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Materialized View</strong>: A physical data copy (SQL Server uses indexed views).
+<ul>
+<li><strong>Sub-explanation</strong>: Stores data for performance.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> Sales.vSalesSummary <span class="hljs-keyword">WITH</span> SCHEMABINDING <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> SalesPersonID, <span class="hljs-keyword">COUNT_BIG</span>(*) <span class="hljs-keyword">AS</span> OrderCount
+<span class="hljs-keyword">FROM</span> Sales.SalesOrderHeader
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> SalesPersonID;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Enables indexing, showing materialized view functionality.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="basic-simple-view">Basic: Simple View</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> Sales.vActiveCustomers <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> BusinessEntityID, FirstName, LastName
+<span class="hljs-keyword">FROM</span> Person.Person
+<span class="hljs-keyword">WHERE</span> BusinessEntityID <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> CustomerID <span class="hljs-keyword">FROM</span> Sales.SalesOrderHeader);
+</div></code></pre>
+<p><strong>Explanation</strong>: Shows customers with sales orders.</p>
+<h4 id="intermediate-view-with-joins">Intermediate: View with Joins</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> Sales.vOrderSummary <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> soh.SalesOrderID, soh.OrderDate, p.FirstName, p.LastName
+<span class="hljs-keyword">FROM</span> Sales.SalesOrderHeader soh
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Person.Person p <span class="hljs-keyword">ON</span> soh.CustomerID = p.BusinessEntityID
+<span class="hljs-keyword">WHERE</span> soh.Status = <span class="hljs-number">5</span>;  <span class="hljs-comment">-- Completed orders</span>
+</div></code></pre>
+<p><strong>Explanation</strong>: Combines order and customer data for completed orders.</p>
+<h4 id="advanced-updatable-view">Advanced: Updatable View</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> Person.vEmployeeContact <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> BusinessEntityID, EmailAddress
+<span class="hljs-keyword">FROM</span> Person.EmailAddress
+<span class="hljs-keyword">WHERE</span> BusinessEntityID <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> BusinessEntityID <span class="hljs-keyword">FROM</span> HumanResources.Employee)
+<span class="hljs-keyword">WITH</span> <span class="hljs-keyword">CHECK</span> <span class="hljs-keyword">OPTION</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Allows updates to employee email addresses, restricted to employees.</p>
+<h3 id="real-life-use-case">Real-Life Use Case</h3>
+<p><strong>Customer Service</strong>: AdventureWorks creates a view joining <code>Sales.Customer</code>, <code>Person.Person</code>, and <code>Sales.SalesOrderHeader</code> to display order histories for support agents, excluding sensitive data like credit card numbers.</p>
+<h3 id="stored-procedures">Stored Procedures</h3>
+<h4 id="overview">Overview</h4>
+<p>Stored procedures are precompiled SQL scripts in AdventureWorks2022, executed with parameters to encapsulate logic.</p>
+<h4 id="expanded-explanations-and-definitions">Expanded Explanations and Definitions</h4>
+<ul>
+<li><strong>Stored Procedure</strong>: A named set of SQL statements, executed server-side.
+<ul>
+<li><strong>Sub-explanation</strong>: Reduces network traffic and ensures consistency.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> Sales.uspGetCustomerName
+    @CustomerID <span class="hljs-built_in">INT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">SELECT</span> FirstName, LastName
+    <span class="hljs-keyword">FROM</span> Person.Person
+    <span class="hljs-keyword">WHERE</span> BusinessEntityID = @CustomerID;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Retrieves a customer’s name, showing server-side execution.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Parameters</strong>: <code>IN</code>, <code>OUT</code>, or <code>INOUT</code> for dynamic inputs/outputs.
+<ul>
+<li><strong>Sub-explanation</strong>: Enable reusable logic.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> Sales.uspUpdateOrderStatus
+    @OrderID <span class="hljs-built_in">INT</span>,
+    @NewStatus <span class="hljs-built_in">TINYINT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">UPDATE</span> Sales.SalesOrderHeader
+    <span class="hljs-keyword">SET</span> <span class="hljs-keyword">Status</span> = @NewStatus
+    <span class="hljs-keyword">WHERE</span> SalesOrderID = @OrderID;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Updates status using parameters, fulfilling dynamic handling.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Dynamic SQL</strong>: Builds and executes SQL at runtime.
+<ul>
+<li><strong>Sub-explanation</strong>: Offers flexibility with sanitization to prevent injection.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> Sales.uspDynamicQuery
+    @ColumnName <span class="hljs-keyword">NVARCHAR</span>(<span class="hljs-number">50</span>)
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">DECLARE</span> @<span class="hljs-keyword">SQL</span> <span class="hljs-keyword">NVARCHAR</span>(<span class="hljs-number">200</span>) = N<span class="hljs-string">'SELECT '</span> + <span class="hljs-keyword">QUOTENAME</span>(@ColumnName) + <span class="hljs-string">' FROM Sales.SalesOrderHeader'</span>;
+    <span class="hljs-keyword">EXECUTE</span> sp_executesql @<span class="hljs-keyword">SQL</span>;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Executes a dynamic query, showing flexibility.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="basic-simple-update">Basic: Simple Update</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> Sales.uspUpdateOrderDate
+    @SalesOrderID <span class="hljs-built_in">INT</span>,
+    @NewDate <span class="hljs-built_in">DATE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">UPDATE</span> Sales.SalesOrderHeader
+    <span class="hljs-keyword">SET</span> OrderDate = @NewDate
+    <span class="hljs-keyword">WHERE</span> SalesOrderID = @SalesOrderID;
+<span class="hljs-keyword">END</span>;
+EXEC Sales.uspUpdateOrderDate @SalesOrderID = 43659, @NewDate = '2014-07-01';
+</div></code></pre>
+<p><strong>Explanation</strong>: Updates the order date for a specific sales order.</p>
+<h4 id="intermediate-conditional-logic">Intermediate: Conditional Logic</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> Sales.uspApplyDiscount
+    @SalesOrderID <span class="hljs-built_in">INT</span>,
+    @DiscountPercent <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>)
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">DECLARE</span> @TotalDue <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">SELECT</span> @TotalDue = TotalDue <span class="hljs-keyword">FROM</span> Sales.SalesOrderHeader <span class="hljs-keyword">WHERE</span> SalesOrderID = @SalesOrderID;
+    IF @TotalDue &gt; 5000
+    <span class="hljs-keyword">BEGIN</span>
+        <span class="hljs-keyword">UPDATE</span> Sales.SalesOrderHeader
+        <span class="hljs-keyword">SET</span> TotalDue = TotalDue * (<span class="hljs-number">1</span> - @DiscountPercent / <span class="hljs-number">100</span>)
+        <span class="hljs-keyword">WHERE</span> SalesOrderID = @SalesOrderID;
+    <span class="hljs-keyword">END</span>;
+<span class="hljs-keyword">END</span>;
+EXEC Sales.uspApplyDiscount @SalesOrderID = 43659, @DiscountPercent = 10.00;
+</div></code></pre>
+<p><strong>Explanation</strong>: Applies a discount to orders over $5,000.</p>
+<h4 id="advanced-dynamic-sql">Advanced: Dynamic SQL</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> Sales.uspGenerateSalesReport
+    @GroupColumn <span class="hljs-keyword">NVARCHAR</span>(<span class="hljs-number">50</span>)
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">DECLARE</span> @<span class="hljs-keyword">SQL</span> <span class="hljs-keyword">NVARCHAR</span>(<span class="hljs-number">500</span>);
+    <span class="hljs-keyword">SET</span> @<span class="hljs-keyword">SQL</span> = N<span class="hljs-string">'SELECT '</span> + <span class="hljs-keyword">QUOTENAME</span>(@GroupColumn) + <span class="hljs-string">', SUM(TotalDue) AS TotalSales
+                 FROM Sales.SalesOrderHeader
+                 GROUP BY '</span> + <span class="hljs-keyword">QUOTENAME</span>(@GroupColumn);
+    <span class="hljs-keyword">EXECUTE</span> sp_executesql @<span class="hljs-keyword">SQL</span>;
+<span class="hljs-keyword">END</span>;
+EXEC Sales.uspGenerateSalesReport @GroupColumn = 'SalesPersonID';
+</div></code></pre>
+<p><strong>Explanation</strong>: Generates a sales report grouped by a specified column.</p>
+<h3 id="real-life-use-case">Real-Life Use Case</h3>
+<p><strong>Order Processing</strong>: AdventureWorks uses a stored procedure to update <code>Sales.SalesOrderHeader</code>, <code>Sales.SalesOrderDetail</code>, and <code>Production.ProductInventory</code> in a transaction, ensuring consistent stock and order status.</p>
+<h3 id="query-metadata">Query Metadata</h3>
+<h4 id="overview">Overview</h4>
+<p>Metadata queries retrieve AdventureWorks2022’s structure (e.g., tables, columns) using <code>INFORMATION_SCHEMA</code> or <code>sys</code> catalogs.</p>
+<h4 id="expanded-explanations-and-definitions">Expanded Explanations and Definitions</h4>
+<ul>
+<li><strong>Metadata</strong>: Data about the database schema, stored in system tables.
+<ul>
+<li><strong>Sub-explanation</strong>: Supports documentation and automation.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> TABLE_NAME
+<span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.TABLES
+<span class="hljs-keyword">WHERE</span> TABLE_SCHEMA = <span class="hljs-string">'Sales'</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Lists <code>Sales</code> schema tables, fulfilling schema discovery.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>System Catalogs</strong>: Tables/views like <code>INFORMATION_SCHEMA</code> or <code>sys</code> schemas.
+<ul>
+<li><strong>Sub-explanation</strong>: Provide metadata access.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> sys.tables <span class="hljs-keyword">WHERE</span> schema_name(schema_id) = <span class="hljs-string">'Production'</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Lists <code>Production</code> tables, showing native metadata access.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Constraints</strong>: Rules like primary keys or foreign keys.
+<ul>
+<li><strong>Sub-explanation</strong>: Ensure data integrity.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> CONSTRAINT_NAME
+<span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+<span class="hljs-keyword">WHERE</span> TABLE_NAME = <span class="hljs-string">'SalesOrderHeader'</span> <span class="hljs-keyword">AND</span> CONSTRAINT_TYPE = <span class="hljs-string">'PRIMARY KEY'</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Identifies primary key, fulfilling constraint retrieval.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="basic-list-tables">Basic: List Tables</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> TABLE_NAME
+<span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.TABLES
+<span class="hljs-keyword">WHERE</span> TABLE_SCHEMA = <span class="hljs-string">'Production'</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Lists tables in the <code>Production</code> schema.</p>
+<h4 id="intermediate-column-details">Intermediate: Column Details</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> COLUMN_NAME, DATA_TYPE, IS_NULLABLE
+<span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.COLUMNS
+<span class="hljs-keyword">WHERE</span> TABLE_NAME = <span class="hljs-string">'Product'</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Retrieves column metadata for the <code>Production.Product</code> table.</p>
+<h4 id="advanced-foreign-key-relationships">Advanced: Foreign Key Relationships</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> tc.CONSTRAINT_NAME, kcu.COLUMN_NAME, ccu.TABLE_NAME <span class="hljs-keyword">AS</span> ReferencedTable
+<span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc
+<span class="hljs-keyword">JOIN</span> INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu <span class="hljs-keyword">ON</span> tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME
+<span class="hljs-keyword">JOIN</span> INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE ccu <span class="hljs-keyword">ON</span> tc.CONSTRAINT_NAME = ccu.CONSTRAINT_NAME
+<span class="hljs-keyword">WHERE</span> tc.CONSTRAINT_TYPE = <span class="hljs-string">'FOREIGN KEY'</span> <span class="hljs-keyword">AND</span> tc.TABLE_NAME = <span class="hljs-string">'SalesOrderDetail'</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Lists foreign keys in <code>Sales.SalesOrderDetail</code>, including referenced tables.</p>
+<h3 id="real-life-use-case">Real-Life Use Case</h3>
+<p><strong>Compliance Auditing</strong>: AdventureWorks queries metadata to document <code>Sales</code> and <code>Production</code> schemas, listing tables and constraints for regulatory audits.</p>
+<hr>
+<h2 id="3-indexes">3. Indexes</h2>
+<h3 id="overview">Overview</h3>
+<p>Indexes in AdventureWorks2022 enhance query performance on tables like <code>Production.Product</code>, trading faster reads for slower writes.</p>
+<h4 id="expanded-explanations-and-definitions">Expanded Explanations and Definitions</h4>
+<ul>
+<li><strong>Index</strong>: A data structure (e.g., B-tree) storing column values and row pointers.
+<ul>
+<li><strong>Sub-explanation</strong>: Reduces table scans.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> IX_Product_Name <span class="hljs-keyword">ON</span> Production.Product(<span class="hljs-keyword">Name</span>);
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Speeds up name searches, fulfilling performance enhancement.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Primary Index</strong>: Created for primary keys.
+<ul>
+<li><strong>Sub-explanation</strong>: Ensures uniqueness and fast lookups.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> sys.indexes <span class="hljs-keyword">WHERE</span> object_id = OBJECT_ID(<span class="hljs-string">'Sales.SalesOrderHeader'</span>) <span class="hljs-keyword">AND</span> is_primary_key = <span class="hljs-number">1</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Shows primary index, fulfilling automatic creation.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Clustered Index</strong>: Determines physical data order (one per table).
+<ul>
+<li><strong>Sub-explanation</strong>: Stores data in index order.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> CLUSTERED <span class="hljs-keyword">INDEX</span> IX_SalesOrderHeader_SalesOrderID <span class="hljs-keyword">ON</span> Sales.SalesOrderHeader(SalesOrderID);
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Orders data by <code>SalesOrderID</code>, fulfilling physical ordering.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Non-Clustered Index</strong>: Stores pointers, separate from data.
+<ul>
+<li><strong>Sub-explanation</strong>: Optimizes queries flexibly.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> IX_SalesOrderHeader_CustomerID <span class="hljs-keyword">ON</span> Sales.SalesOrderHeader(CustomerID);
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Speeds customer queries, showing flexibility.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Composite Index</strong>: Indexes multiple columns.
+<ul>
+<li><strong>Sub-explanation</strong>: Optimizes multi-column conditions.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> IX_SalesOrderDetail_ProductID_OrderQty <span class="hljs-keyword">ON</span> Sales.SalesOrderDetail(ProductID, OrderQty);
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Enhances multi-column queries, fulfilling composite indexing.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="basic-single-column-index">Basic: Single-Column Index</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> IX_SalesOrderHeader_OrderDate <span class="hljs-keyword">ON</span> Sales.SalesOrderHeader(OrderDate);
+</div></code></pre>
+<p><strong>Explanation</strong>: Speeds up queries filtering by <code>OrderDate</code>.</p>
+<h4 id="intermediate-composite-index">Intermediate: Composite Index</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> IX_SalesOrderDetail_ProductID_UnitPrice <span class="hljs-keyword">ON</span> Sales.SalesOrderDetail(ProductID, UnitPrice);
+</div></code></pre>
+<p><strong>Explanation</strong>: Optimizes queries like <code>WHERE ProductID = 707 AND UnitPrice &gt; 100</code>.</p>
+<h4 id="advanced-filtered-index">Advanced: Filtered Index</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> NONCLUSTERED <span class="hljs-keyword">INDEX</span> IX_SalesOrderHeader_OnlineOrders <span class="hljs-keyword">ON</span> Sales.SalesOrderHeader(SalesOrderID)
+<span class="hljs-keyword">WHERE</span> OnlineOrderFlag = <span class="hljs-number">1</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Indexes online orders, reducing index size.</p>
+<h3 id="real-life-use-case">Real-Life Use Case</h3>
+<p><strong>Product Catalog</strong>: AdventureWorks indexes <code>Production.Product (ProductSubcategoryID, ListPrice)</code> to speed up category and price-based searches, improving online store performance.</p>
+<hr>
+<h2 id="4-triggers">4. Triggers</h2>
+<h3 id="overview">Overview</h3>
+<p>Triggers in AdventureWorks2022 execute automatically in response to DML events on tables like <code>Sales.SalesOrderDetail</code>.</p>
+<h4 id="expanded-explanations-and-definitions">Expanded Explanations and Definitions</h4>
+<ul>
+<li><strong>Trigger</strong>: A procedure tied to a table, activated by events.
+<ul>
+<li><strong>Sub-explanation</strong>: Enforces rules or logs actions.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> Sales.trgLogOrderInsert
+<span class="hljs-keyword">ON</span> Sales.SalesOrderHeader
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Sales.SalesOrderHeader (SalesOrderID, OrderDate, <span class="hljs-keyword">Comment</span>)
+    <span class="hljs-keyword">SELECT</span> SalesOrderID, <span class="hljs-keyword">GETDATE</span>(), <span class="hljs-string">'Logged via trigger'</span>
+    <span class="hljs-keyword">FROM</span> inserted;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Logs new orders, fulfilling automation (note: this is a simplified example; typically, logging would use a separate table, but we’re constrained to existing tables).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>BEFORE Trigger</strong>: Executes pre-event (SQL Server uses <code>INSTEAD OF</code>).
+<ul>
+<li><strong>Sub-explanation</strong>: Validates data.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> Sales.trgCheckOrder
+<span class="hljs-keyword">ON</span> Sales.SalesOrderHeader
+INSTEAD <span class="hljs-keyword">OF</span> <span class="hljs-keyword">INSERT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">FROM</span> inserted <span class="hljs-keyword">WHERE</span> TotalDue &lt; <span class="hljs-number">0</span>)
+        THROW <span class="hljs-number">50001</span>, <span class="hljs-string">'TotalDue cannot be negative.'</span>, <span class="hljs-number">1</span>;
+    ELSE
+        <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Sales.SalesOrderHeader <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> inserted;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Prevents negative <code>TotalDue</code>, fulfilling validation.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>AFTER Trigger</strong>: Executes post-event.
+<ul>
+<li><strong>Sub-explanation</strong>: Logs changes.</li>
+<li><strong>Code Example</strong>:<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> Sales.trgLogOrderUpdate
+<span class="hljs-keyword">ON</span> Sales.SalesOrderHeader
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Sales.SalesOrderHeader (SalesOrderID, OrderDate, <span class="hljs-keyword">Comment</span>)
+    <span class="hljs-keyword">SELECT</span> SalesOrderID, <span class="hljs-keyword">GETDATE</span>(), <span class="hljs-string">'Update logged'</span>
+    <span class="hljs-keyword">FROM</span> inserted;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<ul>
+<li><strong>Comment</strong>: Logs updates, showing post-event action (simplified to use existing table).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="basic-update-trigger">Basic: Update Trigger</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> Sales.trgUpdateOrderComment
+<span class="hljs-keyword">ON</span> Sales.SalesOrderHeader
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">UPDATE</span> Sales.SalesOrderHeader
+    <span class="hljs-keyword">SET</span> <span class="hljs-keyword">Comment</span> = <span class="hljs-string">'New order added'</span>
+    <span class="hljs-keyword">WHERE</span> SalesOrderID <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> SalesOrderID <span class="hljs-keyword">FROM</span> inserted);
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Adds a comment to new sales orders.</p>
+<h4 id="intermediate-validation-trigger">Intermediate: Validation Trigger</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> Production.trgPreventNegativeInventory
+<span class="hljs-keyword">ON</span> Production.ProductInventory
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">FROM</span> inserted <span class="hljs-keyword">WHERE</span> Quantity &lt; <span class="hljs-number">0</span>)
+        THROW <span class="hljs-number">50001</span>, <span class="hljs-string">'Inventory quantity cannot be negative.'</span>, <span class="hljs-number">1</span>;
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Prevents negative inventory updates.</p>
+<h4 id="advanced-cascading-trigger">Advanced: Cascading Trigger</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> Sales.trgUpdateOrderSubTotal
+<span class="hljs-keyword">ON</span> Sales.SalesOrderDetail
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span>, <span class="hljs-keyword">UPDATE</span>
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">UPDATE</span> Sales.SalesOrderHeader
+    <span class="hljs-keyword">SET</span> SubTotal = (
+        <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SUM</span>(UnitPrice * OrderQty)
+        <span class="hljs-keyword">FROM</span> Sales.SalesOrderDetail sod
+        <span class="hljs-keyword">WHERE</span> sod.SalesOrderID = Sales.SalesOrderHeader.SalesOrderID
+    )
+    <span class="hljs-keyword">WHERE</span> SalesOrderID <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> SalesOrderID <span class="hljs-keyword">FROM</span> inserted);
+<span class="hljs-keyword">END</span>;
+</div></code></pre>
+<p><strong>Explanation</strong>: Recalculates <code>SubTotal</code> in <code>SalesOrderHeader</code> when order details change.</p>
+<h3 id="real-life-use-case">Real-Life Use Case</h3>
+<p><strong>Inventory Management</strong>: AdventureWorks uses triggers on <code>Production.ProductInventory</code> to validate stock updates, preventing negative quantities and ensuring accurate supply chain data.</p>
+<hr>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong>Advanced Queries and Joins</strong>: Analyze AdventureWorks2022 data with subqueries, CTEs, and joins.</li>
+<li><strong>Views</strong>: Simplify and secure data access.</li>
+<li><strong>Stored Procedures</strong>: Encapsulate order processing logic.</li>
+<li><strong>Query Metadata</strong>: Document schemas for audits.</li>
+<li><strong>Indexes</strong>: Optimize sales and product queries.</li>
+<li><strong>Triggers</strong>: Automate inventory validation.</li>
+</ul>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li>SQL Server documentation: https://docs.microsoft.com/sql</li>
+<li>AdventureWorks2022: https://github.com/Microsoft/sql-server-samples</li>
+<li>Practice: SQLZoo, LeetCode</li>
+<li>Books: &quot;T-SQL Fundamentals&quot; by Itzik Ben-Gan</li>
+</ul>
+
+</body>
+</html>
