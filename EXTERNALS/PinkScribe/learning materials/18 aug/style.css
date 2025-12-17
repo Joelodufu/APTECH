@@ -1,0 +1,21 @@
+
+.s1{
+    height: 50vh;
+    background-image: url(./back.jpg);
+    background-size: cover;
+    color: white;
+}
+
+.s2{
+    height: 50vh;
+    background: linear-gradient(to bottom right, blue, green);
+    color: white;
+}
+ h1{
+    opacity: .5;
+ }
+
+ .s1 p{
+    color: green;
+ }
+

@@ -21,7 +21,8 @@ This course is designed for beginner to intermediate Flutter developers who want
 **Format:** Each module includes explanations, code examples, exercises, and quizzes. Use the provided code in a new Flutter project to test.
 
 Create a basic Flutter app for exercises:
-<xaiArtifact artifact_id="574c8567-b0ed-4e26-b096-e4bd84fff100" artifact_version_id="4d7e1bce-ea9c-4e7a-8120-81fd69e6c6c1" title="main.dart" contentType="text/x-dart">
+
+```dart
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,7 +46,7 @@ child: Stack(
 );
 }
 }
-</xaiArtifact>
+```
 
 ---
 

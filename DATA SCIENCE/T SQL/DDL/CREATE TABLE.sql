@@ -1,0 +1,8 @@
+-- CREATING TABLES
+--USE CokMull;
+--CREATE TABLE Product(
+--ProductID INT, 
+--ProductName NVARCHAR(200),
+--PurchasePrice DECIMAL,
+--SellingPrice DECIMAL
+--);

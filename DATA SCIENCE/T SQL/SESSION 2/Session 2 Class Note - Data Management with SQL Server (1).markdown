@@ -1,9 +1,9 @@
 # Session 2 Class Note: Data Management with SQL Server (SQL-TL2)
 
 **Course**: Data Management with SQL Server (OV-1507)  
-**Session**: 2 (SQL-TL2)  
+Session: 2 (SQL-TL2)  
 **Duration**: 2 hours  
-**Date**: March 2024 (as per course schedule)  
+**Date**: March 2024 (as per course schedule)  ****
 **Objective**: Understand the architecture, features, and components of SQL Server 2022, and learn how to connect to SQL Server instances using SQL Server Management Studio (SSMS).
 
 ## Session Overview

@@ -1,0 +1,3 @@
+--SELECTION
+SELECT * 
+FROM Product;

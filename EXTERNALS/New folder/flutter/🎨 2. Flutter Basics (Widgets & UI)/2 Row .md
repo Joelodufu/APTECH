@@ -21,7 +21,7 @@ This course is designed for beginner to intermediate Flutter developers who want
 **Format:** Each module includes explanations, code examples, exercises, and quizzes. Use the provided code in a new Flutter project to test.
 
 Create a basic Flutter app for exercises:
-<xaiArtifact artifact_id="b6d7893b-698a-4d39-9c18-12829aa39909" artifact_version_id="4b3b0a18-760d-48b3-ba97-caeb99dd7668" title="main.dart" contentType="text/x-dart">
+```DART
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,8 +45,7 @@ child: Row(
 );
 }
 }
-</xaiArtifact>
-
+```
 ---
 
 ## Module 1: Introduction to the Row Widget

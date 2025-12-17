@@ -182,9 +182,9 @@ db.StudentMarks.find({ marks: { $gt: 85 } }, { name: 1, "marks.$": 1, _id: 0 })
 
 ### Definition
 Field update operators (`$set`, `$unset`, `$inc`, `$mul`, `$rename`, `$min`, `$max`, `$currentDate`, `$addToSet`) modify document fields in update operations.
-
-### Explanation
-These operators update specific fields. `$set` sets a field value, `$unset` removes a field, `$inc` increments a number, `$rename` changes a field name, and `$addToSet` adds unique values to an array. Used in `updateOne()` or `updateMany()`.
+**
+### **Explanation**
+These operators update specific fields. `$set` sets a field value, `$unset` removes a field, `$inc` increments a number, `$rename` changes a field name, and `$addToSet**` adds unique values to an array. Used in `updateOne()` or `updateMany()`.
 
 ### Example
 ```javascript
@@ -285,7 +285,7 @@ db.products.updateMany({ price: { $lt: 200 } }, { $addToSet: { categories: "acce
 5. `[{ "name": "Laptop", ... }, { "name": "Mouse", ... }, { "name": "Book", ... }]`
 6. `{ acknowledged: true, matchedCount: 1, modifiedCount: 1 }`
 7. `{ acknowledged: true, matchedCount: 2, modifiedCount: 2 }`
-
+****
 ---
 
 ## Additional Notes

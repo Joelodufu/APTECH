@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Employees xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Employee>
+		<Name>Chinedu Okafor</Name>
+		<Department>Finance</Department>
+		<Salary currency="NGN">250000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Maryam Bello</Name>
+		<Department>Human Resources</Department>
+		<Salary currency="NGN">210000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Tunde Adebayo</Name>
+		<Department>Engineering</Department>
+		<Salary currency="NGN">320000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Aisha Mohammed</Name>
+		<Department>Administration</Department>
+		<Salary currency="NGN">195000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Emeka Nwosu</Name>
+		<Department>IT Support</Department>
+		<Salary currency="NGN">280000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Grace Etim</Name>
+		<Department>Customer Service</Department>
+		<Salary currency="NGN">185000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Samuel Odu</Name>
+		<Department>Procurement</Department>
+		<Salary currency="NGN">230000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Chiamaka Eze</Name>
+		<Department>Marketing</Department>
+		<Salary currency="NGN">260000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Oluwaseun Ajayi</Name>
+		<Department>Research and Development</Department>
+		<Salary currency="NGN">340000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Hassan Yusuf</Name>
+		<Department>Operations</Department>
+		<Salary currency="NGN">300000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Victoria Udo</Name>
+		<Department>Legal</Department>
+		<Salary currency="NGN">310000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Benjamin Okon</Name>
+		<Department>Quality Control</Department>
+		<Salary currency="NGN">275000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Fatima Sani</Name>
+		<Department>Public Relations</Department>
+		<Salary currency="NGN">220000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Ahmed Sule</Name>
+		<Department>Accounting</Department>
+		<Salary currency="NGN">290000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Joy Nnamdi</Name>
+		<Department>Sales</Department>
+		<Salary currency="NGN">240000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Chisom Obi</Name>
+		<Department>IT Development</Department>
+		<Salary currency="NGN">350000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Henry Okeke</Name>
+		<Department>Logistics</Department>
+		<Salary currency="NGN">200000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Patience Nwachukwu</Name>
+		<Department>Training and Development</Department>
+		<Salary currency="NGN">270000</Salary>
+	</Employee>
+	<Employee>
+		<Name>David Olatunde</Name>
+		<Department>Maintenance</Department>
+		<Salary currency="NGN">230000</Salary>
+	</Employee>
+	<Employee>
+		<Name>Elizabeth Abubakar</Name>
+		<Department>Executive Management</Department>
+		<Salary currency="NGN">500000</Salary>
+	</Employee>
+</Employees>

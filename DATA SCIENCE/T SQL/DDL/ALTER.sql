@@ -1,0 +1,3 @@
+--ALTERING TABLE
+ALTER TABLE Product
+ADD Producer VARCHAR;

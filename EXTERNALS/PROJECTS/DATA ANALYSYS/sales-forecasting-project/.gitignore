@@ -1,0 +1,27 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data files
+data/sales_data.csv
+data/cleaned_sales_data.csv
+
+# Model files
+outputs/models/*.pkl
+
+# Environment and dependency files
+venv/
+*.env
+
+# IDE-specific files (if you're using VS Code or PyCharm)
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+*.bak

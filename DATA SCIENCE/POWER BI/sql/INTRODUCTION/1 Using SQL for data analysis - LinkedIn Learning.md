@@ -1,0 +1,2 @@
+Using SQL for data analysis
+- SQL is the most widely used language for managing data from a relational database. It's also essential in organizing and accessing data to get insights into your business. I'm Nikiya Simpson. I'm a full stack engineer and consultant. And this LinkedIn Learning course, we'll focus on building fundamentals to get you started with data analysis. We'll cover SQL skills like using various data types like dates and strings, utilizing keywords and clauses and a few easy SQL functions like count and averages, so you can get

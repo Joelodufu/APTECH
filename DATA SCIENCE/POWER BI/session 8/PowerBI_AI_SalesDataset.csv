@@ -1,0 +1,121 @@
+TransactionID,CustomerName,Region,ProductCategory,ProductName,Quantity,UnitPrice,TransactionDate,SatisfactionScore,SalesRep
+T001,Kevin Austin,South,Clothing,Formal Shirt,2,1138,2024-06-17,5,Sarah Johnson
+T002,Danielle Pratt,South,Furniture,Sofa Set,4,461,2024-06-27,3,Anna Roberts
+T003,Jamie Romero,South,Furniture,Sofa Set,1,371,2024-01-13,5,Sarah Johnson
+T004,Jose Alexander,West,Furniture,Bookshelf,4,979,2024-07-23,1,Anna Roberts
+T005,Elijah Drake,East,Clothing,T-Shirt,6,494,2024-11-15,5,Sarah Johnson
+T006,Sherry Graves,North,Furniture,Standing Desk,6,539,2024-11-17,1,James Wilson
+T007,Robert Brooks,West,Furniture,Bookshelf,5,739,2024-04-11,1,David Miller
+T008,Derrick Barber,North,Clothing,Winter Jacket,2,384,2024-08-14,5,Sarah Johnson
+T009,Chad Potts,West,Electronics,Gaming Monitor,6,261,2024-06-04,5,James Wilson
+T010,Tiffany Hicks,West,Electronics,Desktop PC,2,768,2024-08-30,2,Sarah Johnson
+T011,Ashley Johnson,North,Electronics,Gaming Monitor,1,1090,2024-04-19,2,Anna Roberts
+T012,Leah Best,West,Electronics,Gaming Monitor,6,509,2024-08-13,1,David Miller
+T013,Larry Dalton,North,Electronics,Gaming Monitor,1,825,2024-08-29,4,Anna Roberts
+T014,Robert Baird,South,Clothing,Formal Shirt,1,1122,2024-09-25,5,Anna Roberts
+T015,Emily Walker,South,Furniture,Office Chair,2,1177,2024-10-11,4,David Miller
+T016,Tiffany Morris,West,Clothing,Running Shoes,6,1035,2024-01-10,3,James Wilson
+T017,Jordan Atkins,South,Electronics,Smartwatch,2,349,2024-01-24,5,Sarah Johnson
+T018,Michael Black,West,Furniture,Office Chair,2,214,2024-08-26,1,James Wilson
+T019,Tammy Young,West,Furniture,Bed Frame,3,581,2024-10-19,2,Anna Roberts
+T020,Matthew Estes,West,Clothing,Formal Shirt,6,211,2024-11-26,5,James Wilson
+T021,Michael Gordon,South,Clothing,Winter Jacket,2,438,2024-09-20,3,Anna Roberts
+T022,Deborah Mcdaniel,South,Electronics,Smartphone X,2,877,2024-09-21,5,Anna Roberts
+T023,Daniel Thornton,West,Furniture,Dining Table,2,372,2024-10-12,4,David Miller
+T024,Bradley Gonzalez,West,Clothing,T-Shirt,4,394,2024-10-29,1,James Wilson
+T025,Robert Vargas,South,Electronics,Tablet Air,4,538,2024-02-09,4,James Wilson
+T026,Adam Miller,North,Electronics,Bluetooth Earbuds,5,718,2024-07-04,5,Anna Roberts
+T027,Mary Vaughn,South,Furniture,Office Chair,1,1084,2024-01-09,4,Anna Roberts
+T028,John Curtis,South,Furniture,Standing Desk,2,876,2024-08-03,2,Anna Roberts
+T029,Shawn Hunt,West,Electronics,Smartphone X,6,912,2024-12-14,4,David Miller
+T030,Patrick Cox,North,Furniture,Dining Table,6,855,2024-08-11,2,David Miller
+T031,Austin Stevens,East,Clothing,Running Shoes,5,581,2024-05-21,2,Sarah Johnson
+T032,Jessica Hopkins,East,Furniture,Bed Frame,2,811,2024-05-20,5,James Wilson
+T033,Alicia Blackburn,South,Electronics,Laptop Pro 15,5,242,2024-10-12,3,Anna Roberts
+T034,Jennifer Melendez,East,Furniture,Sofa Set,1,1104,2024-06-05,5,James Wilson
+T035,Lisa Lopez,South,Electronics,Laptop Pro 15,2,759,2024-06-01,5,Anna Roberts
+T036,Angel Lee,East,Electronics,Desktop PC,1,197,2024-11-18,5,James Wilson
+T037,Shannon Reed,South,Furniture,Standing Desk,1,653,2024-03-05,4,David Miller
+T038,John Fleming,North,Furniture,Standing Desk,3,1157,2024-09-24,4,Anna Roberts
+T039,Tammy Castro,East,Clothing,Hoodie,2,160,2024-08-02,1,James Wilson
+T040,Michelle Cervantes,North,Electronics,Bluetooth Earbuds,3,684,2024-12-10,3,Anna Roberts
+T041,Jonathan Beck,North,Furniture,Office Chair,4,450,2024-06-20,1,James Wilson
+T042,Brandi King,West,Electronics,Laptop Pro 15,3,991,2024-03-24,3,Anna Roberts
+T043,Leslie Alvarez,West,Clothing,Running Shoes,6,709,2024-08-22,4,David Miller
+T044,Shawn Fields,South,Clothing,Formal Shirt,2,678,2024-10-19,5,David Miller
+T045,Brandy Taylor,North,Electronics,Gaming Monitor,3,1131,2024-05-19,4,James Wilson
+T046,Leslie Moore,East,Furniture,Bookshelf,3,1126,2024-04-13,5,James Wilson
+T047,Virginia Stewart,North,Clothing,Hoodie,6,885,2024-10-29,4,Anna Roberts
+T048,Jeffrey Gomez,East,Furniture,Bed Frame,5,405,2024-09-18,1,James Wilson
+T049,Matthew Miller,West,Electronics,Smartphone X,6,785,2024-11-18,4,Sarah Johnson
+T050,Lori Williams,South,Furniture,Bed Frame,3,598,2024-12-08,5,Anna Roberts
+T051,Denise Pena,East,Furniture,Office Chair,5,1048,2024-11-09,1,David Miller
+T052,Shawn Glover,West,Furniture,Sofa Set,6,525,2024-02-20,2,David Miller
+T053,Jennifer Kelly,South,Electronics,Smartwatch,3,752,2024-06-02,1,James Wilson
+T054,Robert Dorsey,East,Electronics,Smartwatch,5,325,2024-08-06,2,James Wilson
+T055,Samantha Graham,West,Electronics,Bluetooth Earbuds,5,769,2024-12-25,1,James Wilson
+T056,Theresa Powell,East,Furniture,Standing Desk,4,1070,2024-08-31,5,David Miller
+T057,Barbara Taylor,North,Clothing,Denim Jeans,2,940,2024-03-31,2,Sarah Johnson
+T058,Anna Smith,South,Furniture,Bed Frame,4,204,2024-12-18,3,Anna Roberts
+T059,Herbert Hicks,North,Electronics,Bluetooth Earbuds,3,920,2024-01-24,4,James Wilson
+T060,Robert Harper,West,Furniture,Sofa Set,3,1115,2024-10-10,2,David Miller
+T061,Stephanie Wiggins,North,Furniture,Coffee Table,4,529,2024-09-02,1,Anna Roberts
+T062,Kelly Briggs,South,Clothing,Hoodie,5,967,2024-03-05,4,Anna Roberts
+T063,Matthew Hodges,East,Electronics,Bluetooth Earbuds,4,1137,2024-03-14,4,David Miller
+T064,Lucas White,North,Furniture,Bookshelf,1,210,2024-05-31,5,Anna Roberts
+T065,Kayla Young,North,Electronics,Smartphone X,5,42,2024-06-13,4,David Miller
+T066,William Parrish,North,Furniture,Sofa Set,1,906,2024-01-27,5,Anna Roberts
+T067,Chase Price,East,Electronics,Bluetooth Earbuds,1,773,2024-03-19,2,Sarah Johnson
+T068,Steve Berger,West,Electronics,Bluetooth Earbuds,2,604,2024-02-16,4,David Miller
+T069,Sarah Johnson,North,Clothing,Winter Jacket,5,836,2024-04-19,1,Sarah Johnson
+T070,Gail Brown,South,Electronics,Tablet Air,2,636,2024-06-04,5,Anna Roberts
+T071,Michael Oneill DVM,West,Electronics,Gaming Monitor,1,881,2024-03-02,4,David Miller
+T072,Edward Mccarthy,West,Clothing,T-Shirt,4,287,2024-04-18,1,Anna Roberts
+T073,Anthony Robinson,East,Electronics,Gaming Monitor,4,284,2024-10-01,2,Anna Roberts
+T074,Charles Smith,South,Clothing,Formal Shirt,1,601,2024-03-18,5,Sarah Johnson
+T075,Robert Bentley,North,Furniture,Office Chair,5,1197,2024-07-16,3,Sarah Johnson
+T076,Valerie Page,West,Clothing,Winter Jacket,4,1099,2024-07-09,2,Anna Roberts
+T077,Juan Diaz,South,Furniture,Office Chair,3,780,2024-02-20,4,James Wilson
+T078,Brian Lewis,West,Clothing,Winter Jacket,4,906,2024-10-20,5,Sarah Johnson
+T079,Wesley Peterson,South,Furniture,Bed Frame,1,809,2024-05-20,4,Sarah Johnson
+T080,Patricia Vaughn,South,Clothing,T-Shirt,1,732,2024-03-04,5,David Miller
+T081,Deborah Williams,South,Electronics,Desktop PC,6,1170,2024-07-14,5,Sarah Johnson
+T082,Harry Payne,North,Electronics,Gaming Monitor,2,1046,2024-12-04,2,Anna Roberts
+T083,Rachael Hoover,West,Furniture,Bookshelf,3,672,2024-08-23,2,James Wilson
+T084,Rachel Ross,South,Furniture,Bed Frame,3,183,2024-05-23,5,James Wilson
+T085,Kara Nash,South,Furniture,Sofa Set,1,306,2024-03-08,3,David Miller
+T086,Cindy Fischer,West,Furniture,Office Chair,6,425,2024-05-03,1,David Miller
+T087,Heather Kennedy,West,Clothing,Winter Jacket,1,70,2024-08-09,3,David Miller
+T088,Elizabeth Meyer,East,Furniture,Coffee Table,4,381,2024-09-12,1,James Wilson
+T089,Cynthia Thompson,West,Electronics,Desktop PC,4,200,2024-01-08,5,Anna Roberts
+T090,Earl Brown,North,Furniture,Bed Frame,3,897,2024-03-05,5,Anna Roberts
+T091,Jill Patrick,West,Clothing,Sneakers,1,605,2024-09-19,3,David Miller
+T092,Melissa Gray,North,Electronics,Smartphone X,5,933,2024-03-20,5,Anna Roberts
+T093,Tracy Herring,North,Electronics,Smartphone X,3,245,2024-12-14,4,David Miller
+T094,Michael Williams,West,Furniture,Sofa Set,5,1146,2024-11-06,5,David Miller
+T095,Kimberly Smith,South,Clothing,Hoodie,4,601,2024-08-22,2,David Miller
+T096,Edwin Moss,North,Clothing,Denim Jeans,5,1170,2024-04-29,2,Sarah Johnson
+T097,Terri Schultz,East,Electronics,Gaming Monitor,1,859,2024-12-01,5,Anna Roberts
+T098,Kimberly Wilcox,South,Clothing,Sneakers,3,1133,2024-02-14,3,James Wilson
+T099,Rita Boyer,West,Electronics,Tablet Air,6,817,2024-02-08,1,Anna Roberts
+T100,Stephanie Smith,North,Clothing,Denim Jeans,5,943,2024-03-01,4,Sarah Johnson
+T101,Ashley Cunningham,East,Clothing,Running Shoes,6,615,2024-06-20,2,Anna Roberts
+T102,Jesse Davis DDS,West,Clothing,Winter Jacket,2,658,2024-03-15,3,Anna Roberts
+T103,Brian Hoover,East,Electronics,Gaming Monitor,4,226,2024-01-03,5,James Wilson
+T104,Alejandra Thompson,North,Furniture,Bed Frame,3,970,2024-12-01,3,Sarah Johnson
+T105,Holly Oconnor,East,Clothing,T-Shirt,2,243,2024-05-24,5,Anna Roberts
+T106,Jason Morales,North,Clothing,T-Shirt,1,353,2024-03-25,5,James Wilson
+T107,Robert Jimenez,East,Clothing,Sneakers,6,416,2024-01-19,4,David Miller
+T108,Stacy Brown,North,Furniture,Bookshelf,3,1159,2024-10-22,5,Anna Roberts
+T109,Victoria Hines,South,Clothing,Sneakers,4,429,2024-12-14,3,Anna Roberts
+T110,Nicole James,North,Electronics,Gaming Monitor,1,1130,2024-11-07,2,James Wilson
+T111,Roy Cooper,South,Furniture,Bookshelf,3,172,2024-11-15,3,James Wilson
+T112,Keith Morales,North,Electronics,Bluetooth Earbuds,4,537,2024-06-29,1,Sarah Johnson
+T113,Dr. Jeremy Reese Jr.,South,Furniture,Dining Table,2,801,2024-07-31,5,Anna Roberts
+T114,Jennifer Ward,West,Clothing,Hoodie,6,558,2024-08-18,1,Anna Roberts
+T115,Justin Aguilar,South,Furniture,Office Chair,2,54,2024-01-22,3,Anna Roberts
+T116,John Mann,East,Electronics,Smartphone X,3,1177,2024-02-19,3,Sarah Johnson
+T117,Melissa Todd,South,Clothing,Denim Jeans,1,856,2024-10-25,1,David Miller
+T118,Kristin Freeman,West,Electronics,Laptop Pro 15,5,369,2024-07-07,5,James Wilson
+T119,Diamond Howard,East,Clothing,Winter Jacket,4,1150,2024-03-09,2,David Miller
+T120,Laura Howard,South,Electronics,Desktop PC,6,990,2024-06-14,5,Sarah Johnson

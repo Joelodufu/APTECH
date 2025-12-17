@@ -1,0 +1,103 @@
+[
+  {
+    _id: ObjectId("68ac7078b6fe9d0bb82e8fa5"),
+    account_id: 988877,
+    limit: 2500,
+    products: ["InvestmentFund"],
+  },
+  {
+    _id: ObjectId("68ac72f4b6fe9d0bb82e8fa6"),
+    account_id: 988889,
+    limit: 2500,
+    products: ["InvestmentFund"],
+  },
+  {
+    _id: ObjectId("68ac72f4b6fe9d0bb82e8fa7"),
+    age: 85,
+    limit: 14000,
+  },
+  {
+    _id: ObjectId("68ac72f4b6fe9d0bb82e8fa8"),
+    account_id: 988879,
+    limit: 4000,
+    products: ["Purchase"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059cf"),
+    account_id: 1000,
+    limit: 3000,
+    products: ["InvestmentFund"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d0"),
+    account_id: 1001,
+    limit: 8000,
+    products: [
+      "InvestmentFund",
+      "Car Loans",
+      "Insurance",
+      "Gadgets",
+      "Financing",
+    ],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d1"),
+    account_id: 1002,
+    limit: 20000,
+    products: ["InvestmentFund", "Car Loans", "Financing"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d2"),
+    account_id: 1003,
+    limit: 8000,
+    products: ["Gadgets", "Financing"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d3"),
+    account_id: 1004,
+    limit: 6000,
+    products: ["InvestmentFund", "Car Loans", "Financing"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d4"),
+    account_id: 1005,
+    limit: 2500,
+    products: [
+      "InvestmentFund",
+      "Car Loans",
+      "Insurance",
+      "Gadgets",
+      "Financing",
+    ],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d5"),
+    account_id: 1006,
+    limit: 2500,
+    products: [
+      "InvestmentFund",
+      "Car Loans",
+      "Insurance",
+      "Gadgets",
+      "Financing",
+    ],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d6"),
+    account_id: 1007,
+    limit: 5000,
+    products: ["Housing", "Education Resources", "Infrastructure", "Financing"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d7"),
+    account_id: 1008,
+    limit: 4000,
+    products: ["Housing", "Agriculture", "Infrastructure", "Technology"],
+  },
+  {
+    _id: ObjectId("68c82813e088e548a22059d8"),
+    account_id: 1009,
+    limit: 4000,
+    products: ["Housing", "Financing", "Technology"],
+  },
+];

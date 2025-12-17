@@ -1,45 +1,19 @@
-class Main{
-    public static void main(String[] args){
-        // EXPLORING ESCAPE SEQUENCES
-        // New Line
-        printSessionTitle("NEW LINE");
-        printThis("Hello, World!\nWelcome to Java Programming!");
+class Main {
+    public static void main(String[] args) {
+        int age = 5;
+        System.out.println(age);
+        int nextYearAge = ++age;
+        System.out.printf("Initial Age: %d \n", age);
+        System.out.printf("Initial Age: %d \n", nextYearAge);
+        int lastYearAgeThisYear = age++;
+        System.out.printf("Initial Age: %d \n", age);
+        System.out.printf("Initial Age: %d \n", nextYearAge);
 
-        //T A B S
-        printSessionTitle("TABS");
-        printThis("Name:\tJohn Doe\nAge:\t25\nLocation:\tUSA");
-
-
-        //DOUBLE QUOTES
-        printSessionTitle("DOUBLE QUOTES");
-        printThis("She said, \"Hello, World!\"😂😂 with a smile.");
-
-
-        //BACK SLASH
-        printSessionTitle("BACK SLASH");
-        printThis("To escape a backslash, use two: \\\\");
-
-        //Backspace
-        printSessionTitle("BACKSPACE");
-        printThis("Hello, World!\b\b\b\b\b\bJava!"); // Removes "World" and replaces it with "Java!"
-
-        //formart Printing
-        printSessionTitle("FORMATTED PRINTING");
-        String name = "Alice";
-        int age = 30;
-        double height = 5.5;
-        // Using printf
-        System.out.printf("Name: %s\nAge: %d\nHeight: %.1f feet\n", name, age, height);
-
-        
+        System.out.println(nextYearAge);
+        System.out.println(lastYearAgeThisYear);
     }
 
-     static void printThis(String message){
-        System.out.println(message);
-    }
-
-    static void printSessionTitle(String title){
-        System.out.println( title + "\n________________________");
-
+    public static void sayHello() {
+        System.out.println("Hello to the World");
     }
 }

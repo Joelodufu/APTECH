@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "This is the file descriptions"
+  "description": "This is the file descriptions",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }

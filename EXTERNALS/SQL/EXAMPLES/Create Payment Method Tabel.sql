@@ -1,0 +1,18 @@
+--DDL
+-- CREATE DATABASE
+-- CREATE TABLE
+-- CREATE VIEWS
+
+--DML
+	-- INSERTING INTO TABLE
+		-- SINGLE
+		-- MULTIPLE
+	-- UPDATE TABLE
+		--Update entries/rows/instances
+	-- TRUNCATE TABLE
+		--remove all the rows/entries/instances
+	-- DROP TABLE
+		-- remove the table entirely 
+--DCL
+	-- grant access to users
+	-- revoke access to users
