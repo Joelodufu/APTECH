@@ -5,7 +5,7 @@
 ### *Structured for Brain-Mapping + Real-World Problem Use Cases*
 
 ---
-
+ 
 # **MODULE 1: Introduction to Regular Expressions**
 
 ## **1.1 What Are Regular Expressions?**

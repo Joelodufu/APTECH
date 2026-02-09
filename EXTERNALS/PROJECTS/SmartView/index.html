@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QPoint Robotic Menu Mockup</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light theme; adjust for dark */
+            color: #333;
+        }
+        .menu-container {
+            width: 460px;
+            height: 874px; /* Approx for 10+ rows */
+            overflow-y: auto; /* Vertical scroll */
+            overflow-x: hidden; /* No horizontal */
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li.heading {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px 0 5px;
+            color: #d00; /* QPoint red */
+        }
+        li.item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 10px 0 0 10px; /* Rounded upper-left theme */
+            cursor: pointer;
+        }
+        li.item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .item-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            background-color: #ddd; /* Placeholder for icons from _Graphics.zip */
+            border-radius: 50%; /* Or auto-scale actual images */
+        }
+        .item-content {
+            flex: 1;
+        }
+        .item-title {
+            font-size: 16px;
+        }
+        .item-subtext {
+            font-size: 12px;
+            color: #666;
+        }
+        .item-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+            margin-left: auto;
+        }
+        /* Action type colors */
+        .action-motion { background-color: #007bff; } /* Blue for Robotic Movement */
+        .action-control { background-color: #28a745; } /* Green for Device Control */
+        .action-system { background-color: #ffc107; } /* Yellow for System */
+        .action-expansion { background-color: #6c757d; } /* Gray for Menu Expansion */
+        ul.submenu {
+            padding-left: 20px;
+            display: block; /* Static for mockup; use JS to toggle in future */
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <ul>
+            <!-- Custom Heading (from PDF examples) -->
+            <li class="heading">Prepare for Operation</li>
+            <li class="item">
+                <div class="item-icon"></div> <!-- Placeholder: e.g., <img src="path/to/icon.png" alt="Icon" style="width:100%; height:auto;"> -->
+                <div class="item-content">
+                    <div class="item-title">Robot Move - R1 Near</div>
+                    <div class="item-subtext">PATHEND Status: Ready</div>
+                </div>
+                <button class="item-button action-motion">Move To</button>
+            </li>
+            <li class="item disabled">
+                <div class="item-icon"></div>
+                <div class="item-content">
+                    <div class="item-title">Robot Move - R2 Far</div>
+                    <div class="item-subtext">Safefound Not Found</div>
+                </div>
+                <button class="item-button action-motion">Move To</button>
+            </li>
+
+            <!-- Submenu demo (creative addition for multi-level) -->
+            <li class="heading">Robot Management</li>
+            <ul class="submenu">
+                <li class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-content">
+                        <div class="item-title">Enter Auto Mode</div>
+                        <div class="item-subtext">Prerequisite: All Clear</div>
+                    </div>
+                    <button class="item-button action-system">Enter</button>
+                </li>
+                <li class="item">
+                    <div class="item-icon"></div>
+                    <div class="item-content">
+                        <div class="item-title">Far Gripper</div>
+                        <div class="item-subtext">Released</div>
+                    </div>
+                    <button class="item-button action-control">Grip</button>
+                </li>
+                <!-- Nested sub-submenu (demo multi-level) -->
+                <li class="heading">Sub-Options</li>
+                <ul class="submenu">
+                    <li class="item">
+                        <div class="item-icon"></div>
+                        <div class="item-content">
+                            <div class="item-title">Clear Alarms</div>
+                            <div class="item-subtext">No Active Alarms</div>
+                        </div>
+                        <button class="item-button action-system">Clear</button>
+                    </li>
+                </ul>
+            </ul>
+
+            <!-- Robo-Apps (visible) -->
+            <li class="heading">Robo-Apps</li>
+            <li class="item">
+                <div class="item-icon"></div>
+                <div class="item-content">
+                    <div class="item-title">ConveyorPickZone</div>
+                    <div class="item-subtext">Motion Loop R1</div>
+                </div>
+                <button class="item-button action-expansion">Expand</button>
+            </li>
+            <li class="item">
+                <div class="item-icon"></div>
+                <div class="item-content">
+                    <div class="item-title">Modbus Vac Tool</div>
+                    <div class="item-subtext">Grip Status: Off</div>
+                </div>
+                <button class="item-button action-control">Grip</button>
+            </li>
+
+            <!-- Background Robo-Apps (column F=5 in CSV) -->
+            <li class="heading">Background Robo-Apps</li>
+            <li class="item">
+                <div class="item-icon"></div>
+                <div class="item-content">
+                    <div class="item-title">Glass Position</div>
+                    <div class="item-subtext">0000 n/a</div>
+                </div>
+                <button class="item-button action-control">Monitor</button>
+            </li>
+
+            <!-- Favorites (creative addition) -->
+            <li class="heading">Favorites</li>
+            <li class="item">
+                <div class="item-icon"></div>
+                <div class="item-content">
+                    <div class="item-title">Quick Grip</div>
+                    <div class="item-subtext">Added by Operator</div>
+                </div>
+                <button class="item-button action-control">Grip</button>
+            </li>
+            <li class="item">
+                <div class="item-icon"></div>
+                <div class="item-content">
+                    <div class="item-title">Clear Alarms (Group 1)</div>
+                    <div class="item-subtext">Prerequisite Complete</div>
+                </div>
+                <button class="item-button action-system">Clear</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // JS stubs for interaction (from PDF samples; not functional in mockup)
+        function webPageActivity(actionString) {
+            // This would send to supervisory app, e.g., on button click
+            console.log('Sent to app: ' + actionString);
+        }
+
+        // Functions callable from supervisory app
+        function initializeMenu(data) {
+            // Parse string/JSON to build menu dynamically (future)
+            console.log('Initialized with: ' + data);
+        }
+
+        function updateItem(id, subtext, enabled) {
+            // Update subtext/enabled state (future)
+            console.log(`Update item ${id}: ${subtext}, enabled: ${enabled}`);
+        }
+
+        // Example: Add click handlers (for demo; remove for static first step)
+        document.querySelectorAll('.item-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                webPageActivity(btn.textContent); // Simulate send
+            });
+        });
+    </script>
+</body>
+</html>
